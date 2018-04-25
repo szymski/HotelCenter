@@ -2,6 +2,12 @@
     include "DbController.php";
     include "model/apartament.php";
 
+    function DeleteApartament($id) {
+        $stmt = Database::$db->prepare("DELETE FROM `apartament` WHERE `id` = ?");
+        $stmt->bind_param("i", $id);
+        return $stmt->execute();
+    }
+
     function UpdateApartament($id, $ilosc_miejsc, $lozka_jednoOS, $lozka_dwaOS, $wolne) {
         $stmt = Database::$db->prepare("UPDATE `apartamenty` SET `ilosc_miejsc`= ?,`lozka_jednoOS`= ?,`lozka_dwaOS`= ?,`wolne`= ? WHERE `id` = ?");
         $stmt->bind_param("iiiii", $ilosc_miejsc, $lozka_jednoOS, $lozka_dwaOS, $wolne , $id);

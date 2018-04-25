@@ -4,6 +4,18 @@
     session_start();
 
     $hotele = GetAllHotelsByUserId($_SESSION["id"]);
+
+    $error = false;
+    $success = false;
+    if($_SERVER["REQUEST_METHOD"] == "GET") {
+        if(isset($_GET["id"]) && !empty($_GET["id"])) {
+            $success = DeleteHotel($_GET["id"]);
+            if(!$success) {
+                $error = true;
+            }
+            else { header("Location: /hotelmanager.php"); }
+        } else { $error = true; }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -29,13 +41,12 @@
             <table class="table table-striped">
             <thead>
                 <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nazwa</th>
-                <th scope="col">Miasto</th>
-                <th scope="col">Adres</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-
+                    <th scope="col">#</th>
+                    <th scope="col">Nazwa</th>
+                    <th scope="col">Miasto</th>
+                    <th scope="col">Adres</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
                 <tbody> 
@@ -47,7 +58,7 @@
                             <td><?=$hotele[$i]->GetAdres();?></td>
                             <!-- /apartamentmanager.php?id=<?=$hotele[$i]->GetId();?> -->
                             <td><input class="btn" type="button" value="Zarządzaj" onclick="window.location.href='/apartaments.php?id=<?=$hotele[$i]->GetId();?>'"/></td>
-                            <td><input class="btn btn-danger" type="button" value="Usuń" onclick="window.location.href='/apartaments.php?id=<?=$hotele[$i]->GetId();?>'"/></td>
+                            <td><input class="btn btn-danger" type="button" value="Usuń" onclick="window.location.href='/hotelmanager.php?id=<?=$hotele[$i]->GetId();?>'"/></td>
                         </tr>
                     <?php } ?>
                 </tbody>

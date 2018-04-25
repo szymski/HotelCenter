@@ -3,6 +3,12 @@
     include_once "DbController.php";
     include "model/hotel.php";
 
+    function DeleteHotel($id) {
+        $stmt = Database::$db->prepare("DELETE FROM `hotele` WHERE `id` = ?");
+        $stmt->bind_param("i", $id);
+        return $stmt->execute();
+    }
+
     function AddHotel($nazwa, $miasto, $adres, $opis, $wlasciciel) {
         $stmt = Database::$db->prepare("INSERT INTO `hotele` (`nazwa`, `miasto`, `adres`, `opis`, `wlasciciel`) VALUES (?, ?, ?, ?, ?)");
         $stmt->bind_param("ssssi", $nazwa, $miasto, $adres, $opis, $wlasciciel);
