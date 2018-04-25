@@ -57,8 +57,28 @@
                             <td><?=$hotele[$i]->GetCity();?></td>
                             <td><?=$hotele[$i]->GetAdres();?></td>
                             <!-- /apartamentmanager.php?id=<?=$hotele[$i]->GetId();?> -->
+
+                            <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalCenterTitle">Usunąć <?=$hotele[$i]->GetName();?> ?</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    <div class="modal-body text-center">
+                                        <input class="btn btn-danger" type="button" value="Usuń" onclick="window.location.href='/hotelmanager.php?id=<?=$hotele[$i]->GetId();?>'"/>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <td><input class="btn" type="button" value="Zarządzaj" onclick="window.location.href='/apartaments.php?id=<?=$hotele[$i]->GetId();?>'"/></td>
-                            <td><input class="btn btn-danger" type="button" value="Usuń" onclick="window.location.href='/hotelmanager.php?id=<?=$hotele[$i]->GetId();?>'"/></td>
+                            <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target=".bd-example-modal-sm">Usuń</button></td>
                         </tr>
                     <?php } ?>
                 </tbody>

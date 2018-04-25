@@ -87,6 +87,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                             <p>2 wolne pokoje</p>
                             <p>Czesto rezerwowany obiekt</p>
                             <h3>Cena: 256 zł za dobę</h3>
+                            <hr>
+                            <button class="btn btn-primary btn-lg">Rezerwuj pokoje</button>
                         </div>
                     </div>
                 </div>
@@ -102,6 +104,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                             <p>2 wolne pokoje</p>
                             <p>Czesto rezerwowany obiekt</p>
                             <h3>Cena: 256 zł za dobę</h3>
+                            <hr>
+                            <button class="btn btn-primary btn-lg">Rezerwuj pokoje</button>
                         </div>
                     </div>
                 </div>
@@ -117,6 +121,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                             <p>2 wolne pokoje</p>
                             <p>Czesto rezerwowany obiekt</p>
                             <h3>Cena: 256 zł za dobę</h3>
+                            <hr>
+                            <button class="btn btn-primary btn-lg">Rezerwuj pokoje</button>
                         </div>
                     </div>
                 </div>
@@ -132,6 +138,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                             <p>2 wolne pokoje</p>
                             <p>Czesto rezerwowany obiekt</p>
                             <h3>Cena: 256 zł za dobę</h3>
+                            <hr>
+                            <button class="btn btn-primary btn-lg">Rezerwuj pokoje</button>
                         </div>
                     </div>
                 </div>
