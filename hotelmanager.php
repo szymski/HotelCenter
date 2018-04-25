@@ -24,30 +24,35 @@
 </head>
 <body>
     <?php include "css/navbar.php"; ?> 
-    <div class="container mt-4">
-        <table class="table">
-        <thead>
-            <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nazwa</th>
-            <th scope="col">Miasto</th>
-            <th scope="col">Adres</th>
-            <th scope="col"></th>
-            </tr>
-        </thead>
-            <tbody> 
-                <?php for($i = 0; $i <= count($hotele)-1; $i++) { ?>
-                    <tr>
-                        <th scope="row"><?=$i+1?></th>
-                        <td><?=$hotele[$i]->GetName();?></td>
-                        <td><?=$hotele[$i]->GetCity();?></td>
-                        <td><?=$hotele[$i]->GetAdres();?></td>
-                        <!-- /apartamentmanager.php?id=<?=$hotele[$i]->GetId();?> -->
-                        <td><input class="btn" type="button" value="Zarządzaj" onclick="window.location.href='/apartaments.php?id=<?=$hotele[$i]->GetId();?>'"/></td>
-                    </tr>
-                <?php } ?>
-            </tbody>
-        </table>
+    <div class="container-fluid mt-4">
+        <div class="table-responsive">
+            <table class="table table-striped">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nazwa</th>
+                <th scope="col">Miasto</th>
+                <th scope="col">Adres</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+
+                </tr>
+            </thead>
+                <tbody> 
+                    <?php for($i = 0; $i <= count($hotele)-1; $i++) { ?>
+                        <tr>
+                            <th scope="row"><?=$i+1?></th>
+                            <td><?=$hotele[$i]->GetName();?></td>
+                            <td><?=$hotele[$i]->GetCity();?></td>
+                            <td><?=$hotele[$i]->GetAdres();?></td>
+                            <!-- /apartamentmanager.php?id=<?=$hotele[$i]->GetId();?> -->
+                            <td><input class="btn" type="button" value="Zarządzaj" onclick="window.location.href='/apartaments.php?id=<?=$hotele[$i]->GetId();?>'"/></td>
+                            <td><input class="btn btn-danger" type="button" value="Usuń" onclick="window.location.href='/apartaments.php?id=<?=$hotele[$i]->GetId();?>'"/></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 </html>

@@ -14,7 +14,7 @@
         else { $error = true; }
         if($_POST['miasto'] != NULL && !empty($_POST['miasto'])) { $miasto = str_replace(' ', '', $_POST['miasto']); }
         else { $error = true; }
-        if($_POST['adres'] != NULL && !empty($_POST['adres'])) { $adres = str_replace(' ', '', $_POST['adres']); }
+        if($_POST['adres'] != NULL && !empty($_POST['adres'])) { $adres = $_POST['adres']; }
         else { $error = true; }
         if($_POST['opis'] != NULL && !empty($_POST['opis'])) { $opis = str_replace(' ', '', $_POST['opis']); }
         else { $error = true; }

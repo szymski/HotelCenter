@@ -30,8 +30,8 @@
 </head>
 <body>
     <?php include "css/navbar.php"; ?> 
-    <div class="container mt-4">
-        <table class="table">
+    <div class="container-fluid mt-4">
+        <table class="table table-striped">
         <thead>
             <tr>
             <th scope="col">#</th>
