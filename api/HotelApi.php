@@ -7,6 +7,7 @@
         $stmt = Database::$db->prepare("DELETE FROM `hotele` WHERE `id` = ?");
         $stmt->bind_param("i", $id);
         return $stmt->execute();
+        //trzeba jeszcze apartamenty usunac
     }
 
     function AddHotel($nazwa, $miasto, $adres, $opis, $wlasciciel) {

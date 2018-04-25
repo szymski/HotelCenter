@@ -2,6 +2,10 @@
     include "DbController.php";
     include "model/apartament.php";
 
+    function GetCityById($id) {
+        $stmt = Database::$db->prepare("");
+    }
+
     function DeleteApartament($id) {
         $stmt = Database::$db->prepare("DELETE FROM `apartament` WHERE `id` = ?");
         $stmt->bind_param("i", $id);
