@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 24 Kwi 2018, 20:11
+-- Czas generowania: 25 Kwi 2018, 12:58
 -- Wersja serwera: 10.1.28-MariaDB
 -- Wersja PHP: 7.1.10
 
@@ -42,7 +42,7 @@ CREATE TABLE `apartamenty` (
 --
 
 INSERT INTO `apartamenty` (`id`, `id_hotelu`, `ilosc_miejsc`, `lozka_jednoOS`, `lozka_dwaOS`, `wolne`) VALUES
-(1, 1, 11, 2, 15, 1),
+(1, 1, 2147483647, 5, 12, 1),
 (2, 1, 1, 3, 7, 1),
 (3, 2, 1, 12, 1, 1),
 (4, 3, 3, 1, 1, 1),
@@ -94,9 +94,7 @@ INSERT INTO `hotele` (`id`, `nazwa`, `miasto`, `adres`, `opis`, `wlasciciel`) VA
 (12, 'Biały Dom', 'Wodzisław Śląski', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12),
 (13, 'Taaka Ryba', 'Wodzisław Śląski', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12),
 (14, 'Monopol Hotel', 'Katowice', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12),
-(15, 'Vienna House', 'Katowice', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12),
-(16, 'Katowice Economy', 'Katowice', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12),
-(17, 'Diament Plaza', 'Katowice', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12);
+(15, 'Vienna House', 'Katowice', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12);
 
 -- --------------------------------------------------------
 
@@ -154,6 +152,29 @@ CREATE TABLE `oceny` (
   `ocena` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `wynajem`
+--
+
+CREATE TABLE `wynajem` (
+  `id` int(11) NOT NULL,
+  `data_in` date NOT NULL,
+  `data_out` date NOT NULL,
+  `id_apartamentu` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `wynajem`
+--
+
+INSERT INTO `wynajem` (`id`, `data_in`, `data_out`, `id_apartamentu`) VALUES
+(1, '2018-04-25', '2018-04-26', 5),
+(2, '2018-04-25', '2018-04-26', 5),
+(3, '2018-04-26', '2018-04-27', 5),
+(4, '2018-04-26', '2018-04-27', 2);
+
 --
 -- Indeksy dla zrzutów tabel
 --
@@ -189,6 +210,12 @@ ALTER TABLE `oceny`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `wynajem`
+--
+ALTER TABLE `wynajem`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -202,7 +229,7 @@ ALTER TABLE `apartamenty`
 -- AUTO_INCREMENT dla tabeli `hotele`
 --
 ALTER TABLE `hotele`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT dla tabeli `konta`
@@ -221,6 +248,12 @@ ALTER TABLE `miasta`
 --
 ALTER TABLE `oceny`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT dla tabeli `wynajem`
+--
+ALTER TABLE `wynajem`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
