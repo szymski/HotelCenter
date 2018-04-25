@@ -1,0 +1,7 @@
+input{
+    text-align:center;
+ }
+ .well,.jumbotron{
+     background-color: #eceeef;
+     box-shadow: 9px 9px 7px #08080833;
+    }
