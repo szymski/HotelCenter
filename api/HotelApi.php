@@ -3,11 +3,26 @@
     include_once "DbController.php";
     include "model/hotel.php";
 
+    function GetAllHotels() {
+        $hotels = array();
+        $stmt = Database::$db->prepare("SELECT `id`, `nazwa`, `miasto`, `adres`, `opis` FROM `hotele` WHERE 1");
+        $stmt->execute();   
+        $stmt->bind_result($id, $nazwa, $miasto, $adres, $opis);
+        $stmt->store_result();
+        while($stmt->fetch()) {
+            $hotel = new Hotel($id, $nazwa, $adres, $opis, 0, $miasto);
+            array_push($hotels, $hotel);
+        }
+        return $hotels;
+    }
+
     function DeleteHotel($id) {
         $stmt = Database::$db->prepare("DELETE FROM `hotele` WHERE `id` = ?");
         $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $stmt = Database::$db->prepare("DELETE FROM `apartamenty` WHERE `id_hotelu` = ?");
+        $stmt->bind_param("i", $id);
         return $stmt->execute();
-        //trzeba jeszcze apartamenty usunac
     }
 
     function AddHotel($nazwa, $miasto, $adres, $opis, $wlasciciel) {

@@ -1,9 +1,10 @@
 <!-- <?php
-    include "api/AparamentApi.php";
-    include "api/WynajemApi.php";
+    include "api/HotelApi.php";
     
 $error = false;
 $success = false;
+
+$hotele = GetAllHotels();
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     if(isset($_POST["data_in"]) && !empty($_POST["data_in"])) {
@@ -15,8 +16,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     if(isset($_POST["miasto"]) && !empty($_POST["miasto"])) {
         $miasto = $_POST["miasto"];
     } else { $error = true; }
-
-
 }
 
 
@@ -74,9 +73,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
             </div>
             <div class="col-md-9">
-                <div class="jumbotron">
-                    <h2>Hotel Ambrozja<span class="badge badge-secondary ml-2">⋆⋆⋆⋆</span></h2>
-                    <p><i class="fas fa-map-marker"></i> Rybnik <i class="far fa-map"></i> Centrum</p>
+                <?php foreach($hotele as $hotel) { ?>
+                    <div class="jumbotron">
+                    <h2><?=$hotel->nazwa?><span class="badge badge-secondary ml-2">⋆⋆⋆⋆</span></h2>
+                    <p><i class="fas fa-map-marker"></i> <?=$hotel->miasto?> <i class="far fa-map"></i> <?=$hotel->adres;?></p>
                     <hr>
                     <div class="row">
                         <div class="col-6">
@@ -92,60 +92,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                     </div>
                 </div>
-                <div class="jumbotron">
-                    <h2>Hotel Ambrozja<span class="badge badge-secondary ml-2">⋆⋆⋆⋆</span></h2>
-                    <p><i class="fas fa-map-marker"></i> Rybnik <i class="far fa-map"></i> Centrum</p>
-                    <hr>
-                    <div class="row">
-                        <div class="col-6">
-                            <img src="https://t-ec.bstatic.com/images/hotel/max1024x768/688/68818050.jpg" style="height:100%;width:350px;"class="img-thumbnail" alt="Ambrozja Hotel"> 
-                        </div>
-                        <div class="col-6">
-                            <p>2 wolne pokoje</p>
-                            <p>Czesto rezerwowany obiekt</p>
-                            <h3>Cena: 256 zł za dobę</h3>
-                            <hr>
-                            <button class="btn btn-primary btn-lg">Rezerwuj pokoje</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="jumbotron">
-                    <h2>Hotel Ambrozja<span class="badge badge-secondary ml-2">⋆⋆⋆⋆</span></h2>
-                    <p><i class="fas fa-map-marker"></i> Rybnik <i class="far fa-map"></i> Centrum</p>
-                    <hr>
-                    <div class="row">
-                        <div class="col-6">
-                            <img src="https://t-ec.bstatic.com/images/hotel/max1024x768/688/68818050.jpg" style="height:100%;width:350px;"class="img-thumbnail" alt="Ambrozja Hotel"> 
-                        </div>
-                        <div class="col-6">
-                            <p>2 wolne pokoje</p>
-                            <p>Czesto rezerwowany obiekt</p>
-                            <h3>Cena: 256 zł za dobę</h3>
-                            <hr>
-                            <button class="btn btn-primary btn-lg">Rezerwuj pokoje</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="jumbotron">
-                    <h2>Hotel Ambrozja<span class="badge badge-secondary ml-2">⋆⋆⋆⋆</span></h2>
-                    <p><i class="fas fa-map-marker"></i> Rybnik <i class="far fa-map"></i> Centrum</p>
-                    <hr>
-                    <div class="row">
-                        <div class="col-6">
-                            <img src="https://t-ec.bstatic.com/images/hotel/max1024x768/688/68818050.jpg" style="height:100%;width:350px;"class="img-thumbnail" alt="Ambrozja Hotel"> 
-                        </div>
-                        <div class="col-6">
-                            <p>2 wolne pokoje</p>
-                            <p>Czesto rezerwowany obiekt</p>
-                            <h3>Cena: 256 zł za dobę</h3>
-                            <hr>
-                            <button class="btn btn-primary btn-lg">Rezerwuj pokoje</button>
-                        </div>
-                    </div>
-                </div>
+                <?php } ?>
             </div>
         </div>
     </div>
 </body>
-
 </html>

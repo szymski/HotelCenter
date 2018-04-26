@@ -17,5 +17,9 @@
             $this->lozka_dwuOS = $lozka_dwuOS;
             $this->wolne = $wolne;
         }
+
+        function GetId() {
+            return $this->id;
+        }
     }
 ?>

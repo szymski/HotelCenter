@@ -4,7 +4,6 @@
     session_start();
 
     $hotele = GetAllHotelsByUserId($_SESSION["id"]);
-
     $error = false;
     $success = false;
     if($_SERVER["REQUEST_METHOD"] == "GET") {
@@ -53,16 +52,14 @@
                     <?php for($i = 0; $i <= count($hotele)-1; $i++) { ?>
                         <tr>
                             <th scope="row"><?=$i+1?></th>
-                            <td><?=$hotele[$i]->GetName();?></td>
+                            <td><?=$hotele[$i]->GetName();?> <?php echo $hotele[$i]->GetId(); ?> </td>
                             <td><?=$hotele[$i]->GetCity();?></td>
                             <td><?=$hotele[$i]->GetAdres();?></td>
-                            <!-- /apartamentmanager.php?id=<?=$hotele[$i]->GetId();?> -->
-
                             <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-sm">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalCenterTitle">Usunąć <?=$hotele[$i]->GetName();?> ?</h5>
+                                            <h5 class="modal-title" id="exampleModalCenterTitle">Usunąć <?=$hotele[$i]->GetName();?> <?=$hotele[$i]->GetId();?> ?</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
