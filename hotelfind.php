@@ -1,25 +1,35 @@
-<!-- <?php
+<?php
     include "api/HotelApi.php";
     
 $error = false;
 $success = false;
-
-$hotele = GetAllHotels();
+$errorMsg = "";
+$hotele = array();
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     if(isset($_POST["data_in"]) && !empty($_POST["data_in"])) {
         $data_in = $_POST["data_in"];
-    } else { $error = true; }
+    }
     if(isset($_POST["data_out"]) && !empty($_POST["data_out"])) {
         $data_out = $_POST["data_out"];
-    } else { $error = true; }
+    }
     if(isset($_POST["miasto"]) && !empty($_POST["miasto"])) {
         $miasto = $_POST["miasto"];
     } else { $error = true; }
+
+    echo $data_in . $data_out . $miasto;
+
+    if(!$error) {
+        $hotele = GetAllHotels($miasto);
+        if(count($hotele) == 0) {
+            $error = true;
+            $errorMsg = $errorMsg . " Nie znaleziono hoteli w miescie : " . $miasto;
+        }
+    }
 }
 
 
-?> -->
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,34 +52,33 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <?php include "css/navbar.php"; ?>
     <div class="container">
+        <?php if($error) { ?>
+            <div class="alert alert-danger" role="alert">
+                <center><?=$errorMsg?></center>
+            </div>
+        <?php } ?>
         <div class="row mt-2">
             <div class="col-md-3">
                 <div class="jumbotron">
                         <h3>Wyszukaj hotel</h3>
                         <hr>
-                        <div class="row">
-                            
-                                <label for="data_in">Data przyjazdu</label>
-                                <input type="date" class="form-control mt-2" name="data_in"/>
-                            
-                        </div>
-                        <div class="row">
-                            
-                                <label for="data_out">Data odjazdu</label>
-                                <input type="date" class="form-control mt-2" name="data_out"/>
-                            
-                        </div>
-                        <div class="row">
-                            
-                                <label for="nazwa" class="mt-2">Nazwa miasta/hotelu</label>
-                                <input type="text" class="form-control mt-2" name="nazwa"/>
-                            
-                        </div>
-                        <div class="row">
-                            
-                                <button class="btn btn-info  float-right mt-3">Szukaj</button>
-                            
-                        </div>
+                        <form action="" method="post">
+                            <div class="row">
+                                    <label for="data_in">Data przyjazdu</label>
+                                    <input type="date" class="form-control mt-2" name="data_in"/>
+                            </div>
+                            <div class="row">
+                                    <label for="data_out">Data odjazdu</label>
+                                    <input type="date" class="form-control mt-2" name="data_out"/>
+                            </div>
+                            <div class="row">
+                                    <label for="nazwa" class="mt-2">Nazwa miasta/hotelu</label>
+                                    <input type="text" class="form-control mt-2" name="miasto"/>
+                            </div>
+                            <div class="row">
+                                    <button class="btn btn-info  float-right mt-3">Szukaj</button>
+                            </div>
+                        </form>
                     </div>
             </div>
             <div class="col-md-9">
@@ -88,7 +97,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                             <p>Czesto rezerwowany obiekt</p>
                             <h3>Cena: 256 zł za dobę</h3>
                             <hr>
-                            <button class="btn btn-primary btn-lg">Rezerwuj pokoje</button>
+                            <button class="btn btn-primary btn-lg" onclick="window.location.href='/rezerwacja.php?id_hotelu=<?=$hotel->id?>'">Rezerwuj pokoje</button>
                         </div>
                     </div>
                 </div>

@@ -30,6 +30,7 @@
                 <div class="jumbotron">
                     <h3>Wyszukaj hotel</h3>
                     <hr>
+                    <form action="/hotelfind.php" method="post">
                     <div class="row">
                         <div class="col-6">
                             <label for="data_in">Data przyjazdu</label>
@@ -39,18 +40,19 @@
                             <label for="data_out">Data odjazdu</label>
                             <input type="date" class="form-control mt-2" name="data_out"/>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <label for="nazwa" class="mt-2">Nazwa miasta/hotelu</label>
-                            <input type="text" class="form-control mt-2" name="nazwa"/>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <button class="btn btn-info  float-right mt-3">Szukaj</button>
+                        <div class="row">
+                            <div class="col-12">
+                                <label for="nazwa" class="mt-2">Nazwa miasta/hotelu</label>
+                                <input type="text" class="form-control mt-2" name="miasto"/>
+                            </div>
                         </div>
-                    </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <button class="btn btn-info  float-right mt-3">Szukaj</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="col-md-6">

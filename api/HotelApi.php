@@ -1,11 +1,10 @@
 <?php
-
-    include_once "DbController.php";
     include "model/hotel.php";
 
-    function GetAllHotels() {
+    function GetAllHotels($miasto) {
         $hotels = array();
-        $stmt = Database::$db->prepare("SELECT `id`, `nazwa`, `miasto`, `adres`, `opis` FROM `hotele` WHERE 1");
+        $stmt = Database::$db->prepare("SELECT `id`, `nazwa`, `miasto`, `adres`, `opis` FROM `hotele` WHERE `miasto` = ?");
+        $stmt->bind_param("s", $miasto);
         $stmt->execute();   
         $stmt->bind_result($id, $nazwa, $miasto, $adres, $opis);
         $stmt->store_result();

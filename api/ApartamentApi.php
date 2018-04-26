@@ -1,6 +1,18 @@
 <?php
-    include "DbController.php";
     include "model/apartament.php";
+
+    function GetAllFree() {
+        $apartamenty = array();
+        $stmt = Database::$db->prepare("SELECT 'id', 'id_hotelu', 'ilosc_miejsc', 'lozka_jednoOS', 'lozka_dwaOS' FROM `apartamenty` WHERE `wolne` = 1");
+        $stmt->execute();
+        $stmt->bind_result($id, $id_hotelu, $ilosc_miejsc, $lozka_jednoOS, $lozka_dwaOS);
+        $stmt->store_result();
+        while($stmt->fetch()) {
+            $apartament = new Apartament($id, $id_hotelu, $ilosc_miejsc, $lozka_jednoOS, $lozka_dwaOS, 1);
+            array_push($apartamenty, $apartament);
+        }
+        return $apartamenty;
+    }
 
     function GetCityById($id) {
         $stmt = Database::$db->prepare("");
@@ -8,7 +20,7 @@
 
     function GetAllApartamenty() {
         $apartamenty = array();
-        $stmt = Database::$db->prepare("SELECT * FROM `apartamenty` WHERE 1");
+        $stmt = Database::$db->prepare("SELECT 'id', 'id_hotelu', 'ilosc_miejsc', 'lozka_jednoOS', 'lozka_dwaOS', 'wolne' FROM `apartamenty` WHERE 1");
         $stmt->execute();
         $stmt->bind_result($id, $id_hotelu, $ilosc_miejsc, $lozka_jednoOS, $lozka_dwaOS, $wolne);
         $stmt->store_result();
