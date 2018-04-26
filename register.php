@@ -1,5 +1,6 @@
 <?php
     include "api/AccountApi.php";
+    include "api/DbController.php";
     $error = false;
     $success = false;
     $errorMsg = "Podano niepoprawne dane";

@@ -1,6 +1,7 @@
 <?php
     session_start();
     include "api/HotelApi.php";
+    include "api/DbController.php";
 
     if(!$_SESSION["id"]) {
         header("Location: /index.php");

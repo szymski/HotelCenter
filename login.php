@@ -1,5 +1,6 @@
 <?php  
     include "api/AccountApi.php";
+    include "api/DbController.php";
     session_start();
 
     $success = false;

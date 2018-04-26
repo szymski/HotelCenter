@@ -1,6 +1,7 @@
 <?php
     include "api/HotelApi.php";
-
+    include "api/DbController.php";
+    
     session_start();
 
     $hotele = GetAllHotelsByUserId($_SESSION["id"]);

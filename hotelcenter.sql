@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 25 Kwi 2018, 12:58
+-- Czas generowania: 27 Kwi 2018, 00:06
 -- Wersja serwera: 10.1.28-MariaDB
 -- Wersja PHP: 7.1.10
 
@@ -34,31 +34,30 @@ CREATE TABLE `apartamenty` (
   `ilosc_miejsc` int(11) NOT NULL,
   `lozka_jednoOS` int(11) NOT NULL,
   `lozka_dwaOS` int(11) NOT NULL,
-  `wolne` tinyint(1) NOT NULL
+  `wolne` tinyint(1) NOT NULL,
+  `data_in` date NOT NULL,
+  `data_out` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
 -- Zrzut danych tabeli `apartamenty`
 --
 
-INSERT INTO `apartamenty` (`id`, `id_hotelu`, `ilosc_miejsc`, `lozka_jednoOS`, `lozka_dwaOS`, `wolne`) VALUES
-(1, 1, 2147483647, 5, 12, 1),
-(2, 1, 1, 3, 7, 1),
-(3, 2, 1, 12, 1, 1),
-(4, 3, 3, 1, 1, 1),
-(5, 4, 3, 1, 1, 1),
-(6, 5, 3, 1, 1, 1),
-(7, 6, 3, 1, 1, 1),
-(8, 7, 3, 1, 1, 1),
-(10, 9, 3, 1, 1, 1),
-(11, 10, 3, 1, 1, 1),
-(12, 11, 3, 1, 1, 1),
-(13, 12, 3, 1, 1, 1),
-(14, 13, 3, 1, 1, 1),
-(15, 14, 3, 1, 1, 1),
-(16, 15, 3, 1, 1, 1),
-(17, 16, 3, 1, 1, 1),
-(18, 17, 3, 1, 1, 1);
+INSERT INTO `apartamenty` (`id`, `id_hotelu`, `ilosc_miejsc`, `lozka_jednoOS`, `lozka_dwaOS`, `wolne`, `data_in`, `data_out`) VALUES
+(1, 1, 2147483647, 5, 12, 0, '2018-04-05', '2018-04-25'),
+(2, 1, 1, 3, 7, 1, '0000-00-00', '0000-00-00'),
+(5, 4, 3, 1, 1, 1, '0000-00-00', '0000-00-00'),
+(6, 5, 3, 1, 1, 1, '0000-00-00', '0000-00-00'),
+(7, 6, 3, 1, 1, 1, '0000-00-00', '0000-00-00'),
+(8, 7, 3, 1, 1, 1, '0000-00-00', '0000-00-00'),
+(10, 9, 3, 1, 1, 1, '0000-00-00', '0000-00-00'),
+(11, 10, 3, 1, 1, 1, '0000-00-00', '0000-00-00'),
+(12, 11, 3, 1, 1, 1, '0000-00-00', '0000-00-00'),
+(13, 12, 3, 1, 1, 1, '0000-00-00', '0000-00-00'),
+(14, 13, 3, 1, 1, 1, '0000-00-00', '0000-00-00'),
+(15, 14, 3, 1, 1, 1, '0000-00-00', '0000-00-00'),
+(16, 15, 3, 1, 1, 1, '0000-00-00', '0000-00-00'),
+(17, 16, 3, 1, 1, 1, '0000-00-00', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -72,29 +71,27 @@ CREATE TABLE `hotele` (
   `miasto` varchar(64) COLLATE utf8_polish_ci NOT NULL,
   `adres` varchar(64) COLLATE utf8_polish_ci NOT NULL,
   `opis` varchar(500) COLLATE utf8_polish_ci NOT NULL,
-  `wlasciciel` int(11) NOT NULL
+  `wlasciciel` int(11) NOT NULL,
+  `image` varchar(256) COLLATE utf8_polish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
 -- Zrzut danych tabeli `hotele`
 --
 
-INSERT INTO `hotele` (`id`, `nazwa`, `miasto`, `adres`, `opis`, `wlasciciel`) VALUES
-(1, 'Politański', 'Rybnik', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12),
-(2, 'Politański', 'Rybnik', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12),
-(3, 'Przy Mlynie', 'Rybnik', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12),
-(4, 'Ambrozja', 'Rybnik', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12),
-(5, 'H&R Korba', 'Rybnik', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12),
-(6, 'Villa Silesia', 'Rybnik', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12),
-(7, 'Olimpia', 'Rybnik', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12),
-(8, 'Korona', 'Rybnik', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12),
-(9, 'Alto', 'Rybnik', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12),
-(10, 'Laskowo', 'Rybnik', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12),
-(11, 'Gościniec Wodzisławski', 'Wodzisław Śląski', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12),
-(12, 'Biały Dom', 'Wodzisław Śląski', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12),
-(13, 'Taaka Ryba', 'Wodzisław Śląski', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12),
-(14, 'Monopol Hotel', 'Katowice', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12),
-(15, 'Vienna House', 'Katowice', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12);
+INSERT INTO `hotele` (`id`, `nazwa`, `miasto`, `adres`, `opis`, `wlasciciel`, `image`) VALUES
+(4, 'Ambrozja', 'Rybnik', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12, ''),
+(5, 'H&R Korba', 'Rybnik', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12, ''),
+(6, 'Villa Silesia', 'Rybnik', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12, ''),
+(7, 'Olimpia', 'Rybnik', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12, ''),
+(8, 'Korona', 'Rybnik', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12, ''),
+(9, 'Alto', 'Rybnik', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12, ''),
+(10, 'Laskowo', 'Rybnik', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12, ''),
+(11, 'Gościniec Wodzisławski', 'Wodzisław Śląski', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12, ''),
+(12, 'Biały Dom', 'Wodzisław Śląski', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12, ''),
+(13, 'Taaka Ryba', 'Wodzisław Śląski', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12, ''),
+(14, 'Monopol Hotel', 'Katowice', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12, ''),
+(15, 'Vienna House', 'Katowice', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12, '');
 
 -- --------------------------------------------------------
 
@@ -152,29 +149,6 @@ CREATE TABLE `oceny` (
   `ocena` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `wynajem`
---
-
-CREATE TABLE `wynajem` (
-  `id` int(11) NOT NULL,
-  `data_in` date NOT NULL,
-  `data_out` date NOT NULL,
-  `id_apartamentu` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
-
---
--- Zrzut danych tabeli `wynajem`
---
-
-INSERT INTO `wynajem` (`id`, `data_in`, `data_out`, `id_apartamentu`) VALUES
-(1, '2018-04-25', '2018-04-26', 5),
-(2, '2018-04-25', '2018-04-26', 5),
-(3, '2018-04-26', '2018-04-27', 5),
-(4, '2018-04-26', '2018-04-27', 2);
-
 --
 -- Indeksy dla zrzutów tabel
 --
@@ -210,12 +184,6 @@ ALTER TABLE `oceny`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `wynajem`
---
-ALTER TABLE `wynajem`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -223,7 +191,7 @@ ALTER TABLE `wynajem`
 -- AUTO_INCREMENT dla tabeli `apartamenty`
 --
 ALTER TABLE `apartamenty`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT dla tabeli `hotele`
@@ -248,12 +216,6 @@ ALTER TABLE `miasta`
 --
 ALTER TABLE `oceny`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT dla tabeli `wynajem`
---
-ALTER TABLE `wynajem`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
