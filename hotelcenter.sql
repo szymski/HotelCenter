@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 27 Kwi 2018, 00:06
+-- Czas generowania: 29 Kwi 2018, 00:01
 -- Wersja serwera: 10.1.28-MariaDB
 -- Wersja PHP: 7.1.10
 
@@ -80,7 +80,7 @@ CREATE TABLE `hotele` (
 --
 
 INSERT INTO `hotele` (`id`, `nazwa`, `miasto`, `adres`, `opis`, `wlasciciel`, `image`) VALUES
-(4, 'Ambrozja', 'Rybnik', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12, ''),
+(4, 'Ambrozja', 'Rybnik', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12, 'https://t-ec.bstatic.com/images/hotel/max1024x768/688/68818050.jpg'),
 (5, 'H&R Korba', 'Rybnik', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12, ''),
 (6, 'Villa Silesia', 'Rybnik', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12, ''),
 (7, 'Olimpia', 'Rybnik', 'Ul. Kekus Maximus 11', 'Nasz superowy hotel 320', 12, ''),

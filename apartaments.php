@@ -9,10 +9,7 @@
             $apartamenty = GetApartamentByHotelId($id);
         }
     }
-
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,7 +1,7 @@
 <?php
     include "api/HotelApi.php";
     include "api/DbController.php";
-    
+    session_start();
 $error = false;
 $success = false;
 $errorMsg = "";
@@ -18,7 +18,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $miasto = $_POST["miasto"];
     } else { $error = true; }
 
-    echo $data_in . $data_out . $miasto;
+    //echo $data_in . $data_out . $miasto;
 
     if(!$error) {
         $hotele = GetAllHotels($miasto);
@@ -90,7 +90,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                     <hr>
                     <div class="row">
                         <div class="col-6">
-                            <img src="https://t-ec.bstatic.com/images/hotel/max1024x768/688/68818050.jpg" style="height:100%;width:350px;"class="img-thumbnail" alt="Ambrozja Hotel"> 
+                            <img src="<?=$hotel->imgurl;?>" style="height:100%;width:350px;"class="img-thumbnail" alt="Nie znaleziono obrazka"> 
                         </div>
                         <div class="col-6">
                             <span class="badge badge-danger">Często rezerwowany</span>

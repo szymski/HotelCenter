@@ -3,13 +3,13 @@
 
     function GetAllHotels($miasto) {
         $hotels = array();
-        $stmt = Database::$db->prepare("SELECT `id`, `nazwa`, `miasto`, `adres`, `opis` FROM `hotele` WHERE `miasto` = ?");
+        $stmt = Database::$db->prepare("SELECT `id`, `nazwa`, `miasto`, `adres`, `opis`, `image` FROM `hotele` WHERE `miasto` = ?");
         $stmt->bind_param("s", $miasto);
         $stmt->execute();   
-        $stmt->bind_result($id, $nazwa, $miasto, $adres, $opis);
+        $stmt->bind_result($id, $nazwa, $miasto, $adres, $opis, $image);
         $stmt->store_result();
         while($stmt->fetch()) {
-            $hotel = new Hotel($id, $nazwa, $adres, $opis, 0, $miasto);
+            $hotel = new Hotel($id, $nazwa, $adres, $opis, 0, $miasto, $image);
             array_push($hotels, $hotel);
         }
         return $hotels;
@@ -24,9 +24,9 @@
         return $stmt->execute();
     }
 
-    function AddHotel($nazwa, $miasto, $adres, $opis, $wlasciciel) {
-        $stmt = Database::$db->prepare("INSERT INTO `hotele` (`nazwa`, `miasto`, `adres`, `opis`, `wlasciciel`) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssi", $nazwa, $miasto, $adres, $opis, $wlasciciel);
+    function AddHotel($nazwa, $miasto, $adres, $opis, $wlasciciel, $image) {
+        $stmt = Database::$db->prepare("INSERT INTO `hotele` (`nazwa`, `miasto`, `adres`, `opis`, `wlasciciel`, `image`) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssi", $nazwa, $miasto, $adres, $opis, $wlasciciel, $image);
         return $stmt->execute();
     }
 
@@ -56,13 +56,13 @@
 
     function GetAllHotelsByUserId($id) {
         $hotele = array();
-        $stmt = Database::$db->prepare("SELECT `id`, `nazwa`, `miasto`, `adres` FROM `hotele` WHERE `wlasciciel` = ?");
+        $stmt = Database::$db->prepare("SELECT `id`, `nazwa`, `miasto`, `adres`, `image` FROM `hotele` WHERE `wlasciciel` = ?");
         $stmt->bind_param("i", $id);
         $stmt->execute();
-        $stmt->bind_result($id, $nazwa, $miasto, $adres);
+        $stmt->bind_result($id, $nazwa, $miasto, $adres, $image);
         $stmt->store_result();
         while($stmt->fetch()) {
-            $hotel = new Hotel($id, $nazwa, $adres, "", 0, $miasto);
+            $hotel = new Hotel($id, $nazwa, $adres, "", 0, $miasto, $image);
             array_push($hotele, $hotel);
         }
         return $hotele;

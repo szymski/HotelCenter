@@ -5,16 +5,18 @@
     static $opis;
     static $wlasciciel;
     static $miasto;
+    static $imgurl;
 
     class Hotel {
 
-        function __construct($id, $nazwa, $adres, $opis, $wlasciciel, $miasto) {
+        function __construct($id, $nazwa, $adres, $opis, $wlasciciel, $miasto, $imgurl) {
             $this->id = $id;
             $this->nazwa = $nazwa;
             $this->adres = $adres;
             $this->opis = $opis;
             $this->wlascicel = $wlasciciel;
             $this->miasto = $miasto;
+            $this->imgurl = $imgurl;
         }
 
         function GetName() {

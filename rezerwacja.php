@@ -60,10 +60,13 @@
             <div class="col-md-12 text-center">
                 <div class="jumbotron">
                     <h2 class="">Rezerwacja</h2>
-                    <form method="POST">
-
-                    </form>
                 </div>
+                <?php foreach($apartamenty as $apartament) { ?>
+                    <div class="jumbotron">
+                        nasz zajebisty hotel ma <?=$apartament->ilosc_miejsc;?> miejsca
+                        <button class="btn">rezerwuj</button>
+                    </div>
+                <?php } ?>  
             </div>
         </div>
     </div>

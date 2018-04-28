@@ -1,6 +1,4 @@
 <?php
-
-    include "DbController.php";
     include "model/konto.php";
 
     function Login($login, $haslo) {
