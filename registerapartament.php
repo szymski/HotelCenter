@@ -66,7 +66,7 @@
         <?php } ?>
     <div class="row">
         <div class="col-md-6 text-center">
-            <h1>Zarejestruj hotel na HotelCenter</h1>
+            <h1>Dodaj apartament</h1>
             <h5>Z łatwością docieraj do gości i zarabiaj więcej</h5>
         </div>
 

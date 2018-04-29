@@ -1,5 +1,32 @@
 <?php
+    include "api/AccountApi.php";
+    include "api/DbController.php";
     session_start();
+    $error = false;
+    $success = false;
+    $errorMsg = "";
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+        if(isset($_POST["nick"]) && !empty($_POST["nick"])) {
+            $nick = $_POST["nick"];
+            if(ChangeNick($nick, $_SESSION["id"])) {
+                $success = true;
+                $errorMsg = $errorMsg . " Nick zostal zmieniony </br> ";
+            } else { $error = true; }
+        }
+        if(isset($_POST["haslo"]) && !empty($_POST["haslo"])) {
+            $haslo = $_POST["haslo"];
+        }
+        if(isset($_POST["hasloagain"]) && !empty($_POST["hasloagain"])) {
+            $hasloagain = $_POST["hasloagain"];
+        } 
+        if(isset($haslo) && isset($hasloagain)) {
+            if($haslo == $hasloagain) {
+                ChangePassword($haslo, $_SESSION["id"]);
+                $success = true;
+                $errorMsg = $errorMsg . " Haslo zostało zmienione </br> ";
+            } else { $error = true; $errorMsg = $errorMsg . " Hasła nie są identyczne "; }
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,14 +47,25 @@
 <body>
 <?php include "css/navbar.php"; ?>
     <div class="container mt-4">
+    <?php if($error) { ?>
+        <div class="alert alert-danger" role="alert">
+            <center><?php echo $errorMsg; ?></center>
+        </div> 
+    <?php } ?>
+    <?php if($success) { ?>
+        <div class="alert alert-success" role="alert">
+            <center>Sukcess!</br><?php echo $errorMsg; ?></center>
+            <?php header("refresh:1;url=/"); ?>
+        </div> 
+    <?php } ?>
         <div class="row">
             <div class="col-md-12 text-center">
                 <div class="jumbotron">
                     <h2 class="">Zmien swoje dane</h2>
                     <form method="POST">
-                        <input name="login" type="text" class="form-control mt-2" placeholder="Zmien login">
-                        <input name="haslo" type="text" class="form-control mt-2" placeholder="Zmien haslo">
-                        <input name="hasloagain" type="text" class="form-control mt-2" placeholder="Powtórz haslo">
+                        <input name="nick" type="text" class="form-control mt-2" placeholder="Zmien nick">
+                        <input name="haslo" type="password" class="form-control mt-2" placeholder="Zmien haslo">
+                        <input name="hasloagain" type="password" class="form-control mt-2" placeholder="Powtórz haslo">
                         <button class="btn btn-info mt-2">Aktualizuj</button>
                     </form>
                 </div>

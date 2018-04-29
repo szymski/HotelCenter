@@ -4,7 +4,8 @@
     include "api/HotelApi.php";
     include "api/ApartamentApi.php";
     
-    if(AddApartament(4, 3, 1, 1, 1, "", "")) {
-        echo "dziala";
-    } else { echo "nie dziala"; }
+    for($i = 0; $i <= 100; $i++) {
+        //AddApartament(rand(4,15), rand(1,8), rand(1,3), rand(1,3), 1, "", "");
+        echo "Added new apartament </br>";
+    }
 ?>

@@ -38,8 +38,9 @@
     }
 
     function DeleteApartament($id) {
-        $stmt = Database::$db->prepare("DELETE FROM `apartamenty` WHERE `id` = ?");
-        $stmt->bind_param("i", $id);
+        //DELETE apartamenty FROM apartamenty INNER JOIN hotele ON hotele.id = apartamenty.id_hotelu WHERE hotele.wlasciciel = 12 AND apartamenty.id = 1
+        $stmt = Database::$db->prepare("DELETE apartamenty FROM apartamenty INNER JOIN hotele ON hotele.id = apartamenty.id_hotelu WHERE hotele.wlasciciel = ? AND apartamenty.id = ?");
+        $stmt->bind_param("ii", $_SESSION["id"], $id);
         return $stmt->execute();
     }
 
