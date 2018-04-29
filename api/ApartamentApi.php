@@ -1,6 +1,12 @@
 <?php
     include "model/apartament.php";
 
+    function AddApartament($id_hotelu, $ilosc_miejsc, $lozka_jednoOS, $lozka_dwaOS, $wolne, $data_in, $data_out) {
+        $stmt = Database::$db->prepare("INSERT INTO `apartamenty` (`id_hotelu`, `ilosc_miejsc`, `lozka_jednoOS`, `lozka_dwaOS`, `wolne`, `data_in`, `data_out`) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("iiiiiss", $id_hotelu, $ilosc_miejsc, $lozka_jednoOS, $lozka_dwaOS, $wolne, $data_in, $data_out);
+        return $stmt->execute();
+    }
+
     function GetAllFree() {
         $apartamenty = array();
         $stmt = Database::$db->prepare("SELECT 'id', 'id_hotelu', 'ilosc_miejsc', 'lozka_jednoOS', 'lozka_dwaOS' FROM `apartamenty` WHERE `wolne` = 1");

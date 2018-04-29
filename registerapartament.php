@@ -12,8 +12,24 @@
     $success = false;
     $error = false;
     if($_SERVER["REQUEST_METHOD"] == "POST") {
+        if(!empty($_POST["hotel_id"]) && $_POST["hotel_id"] != NULL) {
+            $hotel_id = $_POST["hotel_id"];
+        } else { $error = true; echo "hotel"; }
+        if(!empty($_POST["ilosc_miejsc"]) && $_POST["ilosc_miejsc"] != NULL) {
+            $ilosc_miejsc = $_POST["ilosc_miejsc"];
+        } else { $error = true; echo "iloscmiejsc"; }   
+        if(!empty($_POST["lozka_jednoOS"]) && $_POST["lozka_jednoOS"] != NULL) {
+            $lozka_jednoOS = $_POST["lozka_jednoOS"];
+        } else { $error = true; echo "lozka1os"; }
+        if(!empty($_POST["lozka_dwaOS"]) && $_POST["lozka_dwaOS"] != NULL) {
+            $lozka_dwaOS = $_POST["lozka_dwaOS"];
+        } else { $error = true; echo "lozka2os"; }
 
-        
+        if(!$error) {
+            if(AddApartament($hotel_id, $ilosc_miejsc, $lozka_jednoOS, $lozka_dwaOS, 1, "", "")) {
+                $success = true;
+            } else { $error = true; }
+        }            
     }
 ?>
 <!DOCTYPE html>
@@ -44,7 +60,8 @@
         <?php } ?>
         <?php if($success) { ?>
             <div class="alert alert-success" role="alert">
-                <center><?php echo "Hotel zostal dodany"; ?></center>
+                <center><?php echo "Apartament zostal dodany"; ?></center>
+                <?php header("Location: /apartaments.php?id=$hotel_id"); ?>
             </div>
         <?php } ?>
     <div class="row">
