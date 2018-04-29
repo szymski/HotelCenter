@@ -59,6 +59,9 @@
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
+        <a href="registerapartament.php">
+            <button class="btn btn-outline-info my-2 my-sm-0 mr-2" type="button">Dodaj Apartament</button>
+          </a>
           <a href="registerhotel.php">
             <button class="btn btn-outline-info my-2 my-sm-0 mr-2" type="button">Dodaj Hotel</button>
           </a>

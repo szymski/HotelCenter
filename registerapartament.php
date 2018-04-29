@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include "api/ApartamentApi.php";
     include "api/HotelApi.php";
     include "api/DbController.php";
 
@@ -7,27 +8,12 @@
         header("Location: /index.php");
     }
 
-    $miasta = GetAllCities();
+    $hotele = GetAllHotelsByUserId($_SESSION["id"]);
     $success = false;
     $error = false;
     if($_SERVER["REQUEST_METHOD"] == "POST") {
-        if($_POST['nazwa'] != NULL && !empty($_POST['nazwa'])) { $nazwa = str_replace(' ', '', $_POST['nazwa']); }
-        else { $error = true; }
-        if($_POST['miasto'] != NULL && !empty($_POST['miasto'])) { $miasto = str_replace(' ', '', $_POST['miasto']); }
-        else { $error = true; }
-        if($_POST['adres'] != NULL && !empty($_POST['adres'])) { $adres = $_POST['adres']; }
-        else { $error = true; }
-        if($_POST['opis'] != NULL && !empty($_POST['opis'])) { $opis = str_replace(' ', '', $_POST['opis']); }
-        else { $error = true; }
 
-        if(!$error) {
-            if(AddHotel($nazwa, $miasto, $adres, $opis, $_SESSION["id"], 0)) {
-                $success = true;
-            }
-            else {
-                $success = false;
-            }
-        }
+        
     }
 ?>
 <!DOCTYPE html>
@@ -69,24 +55,24 @@
 
         <div class="col-md-6">
             <div class="jumbotron">
-                <h5>Chcę zarejestrować hotel</h5>
+                <h5>Chcę zarejestrować apartament</h5>
                 <hr>
                 <form method="POST">
-                    <label for="name">Nazwa hotelu</label>
-                    <input type="text" class="form-control" name="nazwa">
-                    <label for="miasto">Miasto</label>
-                    <select class="form-control" name="miasto">
-                    <?php
-                        foreach($miasta as $miasto) {
-                            echo "<option value='".$miasto."'>" . $miasto . "</option>";
-                        }
-                    ?>
-                    </select>
-                    <label for="adres">Adres</label>
-                    <input type="text" class="form-control" name="adres">
-                    <label for="info">Opis</label>
-                    <textarea class="form-control" rows="5" name="opis"></textarea>
-                    <center><button class="btn btn-info mt-2" type="submit">Rozpocznij -></button><center>
+                    <label for="name">Wybierz hotel</label>
+                    <select name="hotel_id" class="form-control">
+                            <?php
+                                foreach($hotele as $hotel) {
+                                    echo "<option value='".$hotel->id."'>" . $hotel->nazwa . "</option>";
+                                }
+                            ?>
+                        </select>
+                    <label for="name">Ilość miejsc</label>
+                    <input type="number" class="form-control" name="ilosc_miejsc">
+                    <label for="name">Ilość łóżek 1 os.</label>
+                    <input type="number" class="form-control" name="lozka_jednoOS">
+                    <label for="name">Ilość łóżek 2 os.</label>
+                    <input type="number" class="form-control" name="lozka_dwaOS">
+                    <center><button class="btn btn-info mt-2" type="submit">Dodaj apartament</button><center>
                 </form>
             </div>
         </div>
