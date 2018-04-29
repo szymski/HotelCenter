@@ -38,7 +38,7 @@
     }
 
     function DeleteApartament($id) {
-        $stmt = Database::$db->prepare("DELETE FROM `apartament` WHERE `id` = ?");
+        $stmt = Database::$db->prepare("DELETE FROM `apartamenty` WHERE `id` = ?");
         $stmt->bind_param("i", $id);
         return $stmt->execute();
     }

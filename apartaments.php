@@ -7,6 +7,10 @@
         if(!empty($_GET["id"]) && isset($_GET["id"])) {
             $id = $_GET["id"];
             $apartamenty = GetApartamentByHotelId($id);
+            if(isset($_GET["delete_id"])) {
+                DeleteApartament($_GET["delete_id"]);
+                header("Location: /apartaments.php?id=$id");    
+            }
         }
     }
 ?>
@@ -37,6 +41,8 @@
             <th scope="col">Łóżka jednoosobwe</th>
             <th scope="col">Łóżka dwuosobowe</th>
             <th scope="col">Wolne</th>
+            <th></th>
+            <th></th>
             </tr>
         </thead>
             <tbody> 
@@ -47,7 +53,11 @@
                         <td><?=$apartamenty[$i]->lozka_jednoOS;?></td>
                         <td><?=$apartamenty[$i]->lozka_dwuOS;?></td>
                         <td><?=$apartamenty[$i]->wolne;?></td>
-                        <td><input class="btn" type="button" value="Zarządzaj" onclick="window.location.href='/apartmanager.php?id=<?=$apartamenty[$i]->id;?>'"/></td>
+                        <td><button class="btn btn-default" onclick="window.location.href='/apartmanager.php?id=<?=$apartamenty[$i]->id;?>'">Zarządzaj</button></td>
+                        <form method="get">
+                            <input type="hidden" name="id" value="<?php echo $id; ?>">
+                            <td><button class="btn btn-danger" name="delete_id" type="submit" value="<?php echo $apartamenty[$i]->id; ?>" name="">Usuń</button></td>    
+                        </form>
                     </tr>
                 <?php } ?>
             </tbody>

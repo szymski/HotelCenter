@@ -53,7 +53,7 @@
                     <?php for($i = 0; $i <= count($hotele)-1; $i++) { ?>
                         <tr>
                             <th scope="row"><?=$i+1?></th>
-                            <td><?=$hotele[$i]->GetName();?> <?php echo $hotele[$i]->GetId(); ?> </td>
+                            <td><?=$hotele[$i]->GetName();?></td>
                             <td><?=$hotele[$i]->GetCity();?></td>
                             <td><?=$hotele[$i]->GetAdres();?></td>
                             <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
