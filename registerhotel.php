@@ -92,6 +92,6 @@
         </div>
     </div>
 </div>
-    
+<?php include "css/footer.php"; ?>
 </body>
 </html>

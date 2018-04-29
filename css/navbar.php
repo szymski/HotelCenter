@@ -12,9 +12,10 @@
 
   <head>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
   </head>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="index.php">HotelCenter</a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.php"><i class="fas fa-home"></i> HotelCenter</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -33,10 +34,10 @@
 
       <form class="form-inline my-2 my-lg-0">
         <a href="login.php">
-          <button class="btn btn-outline-info my-2 my-sm-0 mr-2" type="button">Zaloguj</button>
+          <button class="btn btn-outline-light my-2 my-sm-0 mr-2" type="button">Zaloguj</button>
         </a>
         <a href="register.php">
-          <button class="btn btn-outline-danger my-2 my-sm-0" type="button">Zarejestruj</button>
+          <button class="btn btn-outline-light my-2 my-sm-0" type="button">Zarejestruj</button>
         </a>
       </form>
 
@@ -60,13 +61,13 @@
         </ul>
         <form class="form-inline my-2 my-lg-0">
         <a href="registerapartament.php">
-            <button class="btn btn-outline-info my-2 my-sm-0 mr-2" type="button">Dodaj Apartament</button>
+            <button class="btn btn-outline-light my-2 my-sm-0 mr-2" type="button">Dodaj Apartament</button>
           </a>
           <a href="registerhotel.php">
-            <button class="btn btn-outline-info my-2 my-sm-0 mr-2" type="button">Dodaj Hotel</button>
+            <button class="btn btn-outline-light my-2 my-sm-0 mr-2" type="button">Dodaj Hotel</button>
           </a>
           <a href="logout.php">
-            <button class="btn btn-outline-info my-2 my-sm-0" type="button">Wyloguj</button>
+            <button class="btn btn-outline-light my-2 my-sm-0" type="button">Wyloguj</button>
           </a>
         </form>
 

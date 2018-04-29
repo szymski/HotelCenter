@@ -89,7 +89,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-4">
             <div class="jumbotron" style="height:80%;background-image: url(https://www.rybnik.com.pl/pliki/v1/Rybnik_rynek.jpg);">
                     <div class="row">
@@ -117,8 +117,9 @@
                     <hr>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
+    <?php include "css/footer.php"; ?>
 </body>
 
 </html>
