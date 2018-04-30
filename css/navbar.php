@@ -8,12 +8,15 @@
 
 ?>
   <html>
+
   <head>
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+      crossorigin="anonymous">
   </head>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="index.php"><i class="fas fa-home"></i> HotelCenter</a>
+    <a class="navbar-brand" href="index.php">
+      <i class="fas fa-home"></i> HotelCenter</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -53,12 +56,12 @@
           <li class="nav-item active">
             <a class="nav-link" href="account.php">Konto</a>
           </li>
-        <li class="nav-item active">
+          <li class="nav-item active">
             <a class="nav-link" href="hotelmanager.php">Zarządzaj Hotelami</a>
           </li>
-          </ul>
+        </ul>
         <form class="form-inline my-2 my-lg-0">
-        <a href="registerapartament.php">
+          <a href="registerapartament.php">
             <button class="btn btn-outline-light my-2 my-sm-0 mr-2" type="button">Dodaj Apartament</button>
           </a>
           <a href="registerhotel.php">
