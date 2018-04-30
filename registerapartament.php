@@ -50,7 +50,7 @@
 <body>
 <?php include "css/navbar.php"; ?>
 
-<div class="container mt-2">
+<div class="container mt-3">
         <?php if($error) { ?>
             <div class="alert alert-danger" role="alert">
                 <center><?php echo "Podano bledne dane"; ?></center>

@@ -60,10 +60,10 @@
             <div class="col-md-6">
                 <div class="jumbotron" style="height:80%;background-image: url(https://www.rybnik.com.pl/pliki/v1/Rybnik_rynek.jpg);">
                     <div class="row">
-                        <h3 style="color: white;"><?php echo $miasta[0]; ?></h3>
+                        <h3 class="h3index"><?php echo $miasta[0]; ?></h3>
                         <hr>
                     </div>
-                        <p style="color: white;">Ilosc hoteli : <?php echo CountHotelsInCity($miasta[0]); ?></p>
+                        <p class="h3index">Ilosc hoteli : <?php echo CountHotelsInCity($miasta[0]); ?></p>
                     <hr>
                 </div>
             </div>
@@ -72,20 +72,20 @@
             <div class="col-md-6">
             <div class="jumbotron" style="height:80%;background-image: url(https://d-nm.ppstatic.pl/k/r/fa/e6/54bf5c8e9664b_o.jpg?1420066800);">
                     <div class="row">
-                        <h3 style="color: white;"><?php echo $miasta[1]; ?></h3>
+                        <h3 class="h3index"><?php echo $miasta[1]; ?></h3>
                         <hr>
                     </div>
-                        <p style="color: white;">Ilosc hoteli : <?php echo CountHotelsInCity($miasta[1]); ?></p>
+                        <p class="h3index">Ilosc hoteli : <?php echo CountHotelsInCity($miasta[1]); ?></p>
                     <hr>
                 </div>
             </div>
             <div class="col-md-6">
             <div class="jumbotron" style="height:80%;background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Katowice.jpg/1200px-Katowice.jpg);">
                     <div class="row">
-                        <h3 style="color: white;"><?php echo $miasta[2]; ?></h3>
+                        <h3 class="h3index"><?php echo $miasta[2]; ?></h3>
                         <hr>
                     </div>
-                        <p style="color: white;">Ilosc hoteli : <?php echo CountHotelsInCity($miasta[2]); ?></p>
+                        <p class="h3index">Ilosc hoteli : <?php echo CountHotelsInCity($miasta[2]); ?></p>
                     <hr>
                 </div>
             </div>
