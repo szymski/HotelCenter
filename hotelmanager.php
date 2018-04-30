@@ -46,6 +46,8 @@
                     <th scope="col">Adres</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
+                    <th scope="col"></th>
+
                 </tr>
             </thead>
                 <tbody> 
@@ -55,11 +57,11 @@
                             <td><?=$hotele[$i]->GetName();?></td>
                             <td><?=$hotele[$i]->GetCity();?></td>
                             <td><?=$hotele[$i]->GetAdres();?></td>
-                            <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                            <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="delete">
                                 <div class="modal-dialog modal-sm">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalCenterTitle">Usunąć <?=$hotele[$i]->GetName();?> <?=$hotele[$i]->GetId();?> ?</h5>
+                                            <h5 class="modal-title" id="exampleModalCenterTitle">Usunąć <?=$hotele[$i]->GetName();?> ?</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
@@ -74,8 +76,47 @@
                                 </div>
                             </div>
 
+                            <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="imgupload">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalCenterTitle">Prześlij obrazek hotelu</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    <div class="modal-body text-center">
+                                        <?php 
+                                            $error = false;
+                                            $success = false;
+                                            if($_SERVER["REQUEST_METHOD"] == "POST") {
+                                                if(isset($_FILES["file"]) && !empty($_FILES["file"])) {
+                                                    $file = $_FILES["file"];
+                                                    print_r($file); //debug
+                                                    if(AddImage(5, $file)) {
+                                                        $success = true;
+                                                    } else { $error = true; }
+                                                } else { $error = true; }
+                                            }
+                                        ?>
+
+                                        <form action="" method="post" enctype="multipart/form-data">
+                                            <input class="form-control-file" type="file" name="file" id="file">
+                                            <button class="btn btn-primary mt-2" type="submit">Wyślij</button>
+                                        </form>
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <td><input class="btn" type="button" value="Zarządzaj" onclick="window.location.href='/apartaments.php?id=<?=$hotele[$i]->GetId();?>'"/></td>
-                            <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target=".bd-example-modal-sm">Usuń</button></td>
+                            <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#imgupload">Obraz</button></td>
+                            <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete">Usuń</button></td>
                         </tr>
                     <?php } ?>
                 </tbody>
