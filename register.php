@@ -57,7 +57,8 @@
 
         <div class="container mt-4">
             <div class="row">
-                <div class="col-md-12 text-center">
+                <div class="col-md-3 text-center"></div>
+                <div class="col-md-6 text-center">
                     <div class="jumbotron">
                         <h2 class="">Rejestracja</h2>
                         <form method="POST" action="">
@@ -68,6 +69,7 @@
                         </form>
                     </div>
                 </div>
+                <div class="col-md-3 text-center"></div>
             </div>
         </div>
         <?php include "css/footer.php"; ?>

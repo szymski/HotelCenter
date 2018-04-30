@@ -51,18 +51,18 @@
     <?php } ?>
     <div class="container mt-4">
         <div class="row">
-            <div class="col-md-12 text-center">
+            <div class="col-md-3 text-center"></div>
+            <div class="col-md-6 text-center">
                 <div class="jumbotron">
                     <h2 class="">Logowanie</h2>
                     <form method="POST">
-                        <input type="text" class="form-controll mt-2" name="login" placeholder="Login" />
-                        </br>
-                        <input type="password" class="form-controll mt-2" name="haslo" placeholder="Hasło" />
-                        </br>
+                        <input type="text" class="form-control mt-2" name="login" placeholder="Login" />
+                        <input type="password" class="form-control mt-2" name="haslo" placeholder="Hasło" />
                         <button class="btn btn-info mt-3" type="submit">Zaloguj</button>
                     </form>
                 </div>
             </div>
+            <div class="col-md-3 text-center"></div>
         </div>
     </div>
     <?php include "css/footer.php"; ?>
