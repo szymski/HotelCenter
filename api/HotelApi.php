@@ -1,6 +1,17 @@
 <?php
     include "model/hotel.php";
 
+    function GetHotelById($id) {
+        $stmt = Database::$db->prepare("SELECT `nazwa`, `miasto`, `adres`, `opis`, `wlasciciel`, `image` FROM `hotele` WHERE `id` = ?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $stmt->bind_result($nazwa, $miasto, $adres, $opis, $wlasciciel, $image);
+        $stmt->store_result();
+        $stmt->fetch();
+        $hotel = new Hotel($id, $nazwa, $adres, $opis, $wlasciciel, $miasto, $image);
+        return $hotel;
+    }
+
     function GetAllHotels($miasto) {
         $hotels = array();
         $stmt = Database::$db->prepare("SELECT `id`, `nazwa`, `miasto`, `adres`, `opis`, `image` FROM `hotele` WHERE `miasto` = ?");

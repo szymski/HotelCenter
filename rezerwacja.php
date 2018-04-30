@@ -1,5 +1,6 @@
 <?php  
     include "api/ApartamentApi.php";
+    include "api/HotelApi.php";
     include "api/DbController.php";
     session_start();
 
@@ -25,6 +26,7 @@
         } else { $error = true; }
         if(!$error) {
             $apartamenty = GetApartamentByHotelId($id_hotelu);
+            $hotel = GetHotelById($id_hotelu);
         }
     }
 ?>
@@ -60,12 +62,16 @@
             <div class="col-md-12 text-center">
                 <div class="jumbotron">
                     <h2 class="">Rezerwacja</h2>
+                    <p><?=$hotel->opis;?></p>
                 </div>
-                <?php foreach($apartamenty as $apartament) { ?>
-                    <div class="jumbotron">
-                        nasz zajebisty hotel ma <?=$apartament->ilosc_miejsc;?> miejsca
-                        <button class="btn">rezerwuj</button>
-                    </div>
+                <?php foreach($apartamenty as $apartament) {
+                    if($apartament->wolne == 1) { ?>
+                        <div class="jumbotron">
+                            <?php print_r($apartament); ?>
+                            <button class="btn">rezerwuj</button>
+                            <!-- do tego buttona tutaj modal dydlak -->
+                        </div>
+                    <?php } ?>  
                 <?php } ?>  
             </div>
         </div>
