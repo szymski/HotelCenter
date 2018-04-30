@@ -7,9 +7,7 @@
   }
 
 ?>
-
   <html>
-
   <head>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
@@ -58,7 +56,7 @@
         <li class="nav-item active">
             <a class="nav-link" href="hotelmanager.php">Zarządzaj Hotelami</a>
           </li>
-        </ul>
+          </ul>
         <form class="form-inline my-2 my-lg-0">
         <a href="registerapartament.php">
             <button class="btn btn-outline-light my-2 my-sm-0 mr-2" type="button">Dodaj Apartament</button>

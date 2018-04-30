@@ -1,6 +1,5 @@
 <?php  
-    include "api/AccountApi.php";
-    include "api/DbController.php";
+    include "api/apis.php";
     session_start();
 
     $success = false;
@@ -32,7 +31,7 @@
     <title>HotelCenter - Logowanie</title>
 </head>
 <body>
-    <?php include "css/navbar.php"; ?>
+<?php include "css/navbar.php"; ?>
     <?php if($error) { ?>
         <div class="alert alert-danger" role="alert">
             <center>Zle dane logowania</center>

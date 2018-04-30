@@ -1,6 +1,5 @@
 <?php
-    include "api/HotelApi.php";
-    include "api/DbController.php";
+    include "api/apis.php";
     session_start();
 $error = false;
 $success = false;

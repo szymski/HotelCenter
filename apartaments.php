@@ -1,6 +1,5 @@
 <?php
-    include "api/ApartamentApi.php";
-    include "api/DbController.php";
+    include "api/apis.php";
     session_start();
     if($_SERVER["REQUEST_METHOD"] == "GET") {
         $id = NULL;

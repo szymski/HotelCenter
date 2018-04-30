@@ -1,6 +1,7 @@
 <?php
-    include "api/HotelApi.php";
-    include "api/DbController.php";
+    include "api/apis.php"; 
+    // include "api/HotelApi.php";
+    // include "api/DbController.php";
     session_start();
     $miasta = GetAllCities();
 ?>
@@ -24,7 +25,7 @@
 </head>
 
 <body>
-    <?php include "css/navbar.php"; ?>
+<?php include "css/navbar.php"; ?>
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-6">
