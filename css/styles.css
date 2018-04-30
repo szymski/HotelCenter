@@ -1,8 +1,23 @@
-input{
+body {
+    background-image: url("https://www.anglophotography.co.uk/wp-content/uploads/2016/03/material-design-background.gif");
+}
+
+input {
     text-align:center;
  }
- .well,.jumbotron{
-     background-color: #eceeef;
-     box-shadow: 9px 9px 7px #08080833;
-    }
+
+.well,.jumbotron {
+    background-color: #eceeef;
+    box-shadow: 9px 9px 7px #08080833;
+    border-radius: 0px;
+}
+
+.footer-color {
+    background-color: #343a40;
+    color: white;
+}
+
+a {
+    color: white;
+}
     

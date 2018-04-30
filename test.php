@@ -4,10 +4,22 @@
     include "api/HotelApi.php";
     include "api/ApartamentApi.php";
     include "api/AccountApi.php";
-    
-    // for($i = 0; $i <= 100; $i++) {
-    //     //AddApartament(rand(4,15), rand(1,8), rand(1,3), rand(1,3), 1, "", "");
-    //     echo "Added new apartament </br>";
-    // }
-    print_r(GetHotelById(5));
+    include "api/FileApi.php";
+
+    $error = false;
+    $success = false;
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+        if(isset($_FILES["file"]) && !empty($_FILES["file"])) {
+            $file = $_FILES["file"];
+            print_r($file); //debug
+            if(AddImage(5, $file)) {
+                $success = true;
+            } else { $error = true; }
+        } else { $error = true; }
+    }
 ?>
+
+<form action="" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" id="file">
+    <button type="submit">wyslij</button>
+</form>
