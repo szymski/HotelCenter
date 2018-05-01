@@ -2,25 +2,25 @@
     include "model/hotel.php";
 
     function GetHotelById($id) {
-        $stmt = Database::$db->prepare("SELECT `nazwa`, `miasto`, `adres`, `opis`, `wlasciciel`, `image` FROM `hotele` WHERE `id` = ?");
+        $stmt = Database::$db->prepare("SELECT `nazwa`, `miasto`, `adres`, `opis`, `wlasciciel` FROM `hotele` WHERE `id` = ?");
         $stmt->bind_param("i", $id);
         $stmt->execute();
-        $stmt->bind_result($nazwa, $miasto, $adres, $opis, $wlasciciel, $image);
+        $stmt->bind_result($nazwa, $miasto, $adres, $opis, $wlasciciel);
         $stmt->store_result();
         $stmt->fetch();
-        $hotel = new Hotel($id, $nazwa, $adres, $opis, $wlasciciel, $miasto, $image);
+        $hotel = new Hotel($id, $nazwa, $adres, $opis, $wlasciciel, $miasto);
         return $hotel;
     }
 
     function GetAllHotels($miasto) {
         $hotels = array();
-        $stmt = Database::$db->prepare("SELECT `id`, `nazwa`, `miasto`, `adres`, `opis`, `image` FROM `hotele` WHERE `miasto` = ?");
+        $stmt = Database::$db->prepare("SELECT `id`, `nazwa`, `miasto`, `adres`, `opis` FROM `hotele` WHERE `miasto` = ?");
         $stmt->bind_param("s", $miasto);
         $stmt->execute();   
-        $stmt->bind_result($id, $nazwa, $miasto, $adres, $opis, $image);
+        $stmt->bind_result($id, $nazwa, $miasto, $adres, $opis);
         $stmt->store_result();
         while($stmt->fetch()) {
-            $hotel = new Hotel($id, $nazwa, $adres, $opis, 0, $miasto, $image);
+            $hotel = new Hotel($id, $nazwa, $adres, $opis, 0, $miasto);
             array_push($hotels, $hotel);
         }
         return $hotels;
@@ -35,9 +35,9 @@
         return $stmt->execute();
     }
 
-    function AddHotel($nazwa, $miasto, $adres, $opis, $wlasciciel, $image) {
-        $stmt = Database::$db->prepare("INSERT INTO `hotele` (`nazwa`, `miasto`, `adres`, `opis`, `wlasciciel`, `image`) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssis", $nazwa, $miasto, $adres, $opis, $wlasciciel, $image);
+    function AddHotel($nazwa, $miasto, $adres, $opis, $wlasciciel) {
+        $stmt = Database::$db->prepare("INSERT INTO `hotele` (`nazwa`, `miasto`, `adres`, `opis`, `wlasciciel`) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssis", $nazwa, $miasto, $adres, $opis, $wlasciciel);
         return $stmt->execute();
     }
 
@@ -67,13 +67,13 @@
 
     function GetAllHotelsByUserId($id) {
         $hotele = array();
-        $stmt = Database::$db->prepare("SELECT `id`, `nazwa`, `miasto`, `adres`, `image` FROM `hotele` WHERE `wlasciciel` = ?");
+        $stmt = Database::$db->prepare("SELECT `id`, `nazwa`, `miasto`, `adres` FROM `hotele` WHERE `wlasciciel` = ?");
         $stmt->bind_param("i", $id);
         $stmt->execute();
-        $stmt->bind_result($id, $nazwa, $miasto, $adres, $image);
+        $stmt->bind_result($id, $nazwa, $miasto, $adres);
         $stmt->store_result();
         while($stmt->fetch()) {
-            $hotel = new Hotel($id, $nazwa, $adres, "", 0, $miasto, $image);
+            $hotel = new Hotel($id, $nazwa, $adres, "", 0, $miasto);
             array_push($hotele, $hotel);
         }
         return $hotele;

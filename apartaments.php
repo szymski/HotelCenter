@@ -5,6 +5,7 @@
         $id = NULL;
         if(!empty($_GET["id"]) && isset($_GET["id"])) {
             $id = $_GET["id"];
+            $nazwa = GetHotelById($id)->nazwa;
             $apartamenty = GetApartamentByHotelId($id);
             if(isset($_GET["delete_id"])) {
                 DeleteApartament($_GET["delete_id"]);
@@ -34,7 +35,8 @@
     <body>
         <?php include "css/navbar.php"; ?>
         <div class="container-fluid mt-4">
-            <table class="table table-striped">
+            <center><h1 class="shadowtitle"><?php echo $nazwa; ?></h1></center>
+            <table class="table table-striped mt-2">
                 <thead>
                     <tr>
                         <th scope="col">#</th>

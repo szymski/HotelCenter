@@ -4,6 +4,7 @@
     $error = false;
     $success = false;
     $errorMsg = "";
+    $hotele = GetAllHotelsByUserId($_SESSION["id"]);
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_POST["nick"]) && !empty($_POST["nick"])) {
             $nick = $_POST["nick"];
@@ -76,7 +77,14 @@
                                     <?php echo Get($_SESSION["id"])->nick; ?>
                                 </h4>
                                 <p class="card-text">
-                                    <?php echo GetAllHotelsByUserId($_SESSION["id"]); ?>
+                                    <?php 
+                                        echo "Twoje hotele : " . count($hotele);
+                                        $apartamenty = 0;
+                                        foreach($hotele as $hotel) {
+                                            $apartamenty = $apartamenty + count(GetApartamentByHotelId($hotel->id));
+                                        }
+                                        echo "</br> Twoje apartamenty : " . $apartamenty;
+                                    ?>
                                 </p>
                                 <a href="#" class="btn btn-primary">See Profile</a>
                             </div>

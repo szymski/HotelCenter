@@ -100,7 +100,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                         <hr>
                         <div class="row">
                             <div class="col-6">
-                                <img src="<?=$hotel->imgurl;?>" style="height:100%;width:350px;" class="img-thumbnail" alt="Nie znaleziono obrazka">
+                                <img src="<?=GetPathByHotelId($hotel->id)?>" style="height:100%;width:350px;" class="img-thumbnail" alt="Nie znaleziono obrazka">
                             </div>
                             <div class="col-6">
                                 <span class="badge badge-danger">Często rezerwowany</span>
