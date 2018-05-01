@@ -1,6 +1,5 @@
-<footer class="page-footer font-small pt-4 mt-4">
-    <div class="footer-copyright py-3 footer-color text-center">
-        © 2018 Copyright:
-        <a href="https://github.com/BartekKur1"> Batrłomiej Kurpanik</a> <a href="https://github.com/YoungDydlak"> Dawid Dydliński</a>
+<footer class="footer">
+    <div class="container text-center">
+        <span class="text h3index">© 2018 Copyright: <a href="https://github.com/BartekKur1"> Batrłomiej Kurpanik</a> <a href="https://github.com/YoungDydlak"> Dawid Dydliński</a></span>
     </div>
 </footer>
