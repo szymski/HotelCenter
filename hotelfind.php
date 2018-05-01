@@ -54,9 +54,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php include "css/navbar.php"; ?>
         <div class="container">
             <?php if($error) { ?>
-            <div class="alert alert-danger" role="alert">
+            <div class="alert alert-danger mt-2" role="alert">
                 <center>
-                    <?=$errorMsg?>
+                    <?php echo $errorMsg ?>
                 </center>
             </div>
             <?php } ?>

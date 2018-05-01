@@ -37,7 +37,7 @@
 
     function AddHotel($nazwa, $miasto, $adres, $opis, $wlasciciel) {
         $stmt = Database::$db->prepare("INSERT INTO `hotele` (`nazwa`, `miasto`, `adres`, `opis`, `wlasciciel`) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssis", $nazwa, $miasto, $adres, $opis, $wlasciciel);
+        $stmt->bind_param("ssssi", $nazwa, $miasto, $adres, $opis, $wlasciciel);
         return $stmt->execute();
     }
 

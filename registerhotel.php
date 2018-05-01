@@ -68,8 +68,11 @@
             <?php } ?>
             <div class="row">
                 <div class="col-md-6 text-center">
-                    <h1>Zarejestruj hotel na HotelCenter</h1>
-                    <h5>Z łatwością docieraj do gości i zarabiaj więcej</h5>
+                    <div class="mt-5 mb-3">
+                        <h1>Zarejestruj hotel na HotelCenter</h1>
+                        <h5>Z łatwością docieraj do gości i zarabiaj więcej</h5>
+                        <i class="far fa-building fa-w-14 fa-10x mt-2"></i>
+                    </div>
                 </div>
 
                 <div class="col-md-6">

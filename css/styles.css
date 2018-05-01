@@ -6,6 +6,7 @@ html {
 body {
     background-image: url("https://www.anglophotography.co.uk/wp-content/uploads/2016/03/material-design-background.gif");
     margin-bottom: 60px;
+    font-family: 'Raleway', sans-serif;
 }
 .footer {
     position: absolute;
@@ -44,4 +45,11 @@ a {
 .shadowtitle{
     color: black;
     text-shadow: 2px 2px 4px #000000;
+}
+
+.vertical-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
