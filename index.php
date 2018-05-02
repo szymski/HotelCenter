@@ -4,6 +4,7 @@
     // include "api/DbController.php";
     session_start();
     $miasta = GetAllCities();
+    
 ?>
 
     <!DOCTYPE html>
@@ -56,39 +57,7 @@
                             </div>
                         </form>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="jumbotron" style="height:80%;background-image: url(https://www.rybnik.com.pl/pliki/v1/Rybnik_rynek.jpg);">
-                        <div class="row">
-                            <h3 class="h3index">
-                                <?php echo $miasta[0]; ?>
-                            </h3>
-                            <hr>
-                        </div>
-                        <p class="h3index">Ilosc hoteli :
-                            <?php echo CountHotelsInCity($miasta[0]); ?>
-                        </p>
-                        <hr>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="jumbotron" style="height:80%;background-image: url(https://d-nm.ppstatic.pl/k/r/fa/e6/54bf5c8e9664b_o.jpg?1420066800);">
-                        <div class="row">
-                            <h3 class="h3index">
-                                <?php echo $miasta[1]; ?>
-                            </h3>
-                            <hr>
-                        </div>
-                        <p class="h3index">Ilosc hoteli :
-                            <?php echo CountHotelsInCity($miasta[1]); ?>
-                        </p>
-                        <hr>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="jumbotron" style="height:80%;background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Katowice.jpg/1200px-Katowice.jpg);">
+                    <div class="jumbotron" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Katowice.jpg/1200px-Katowice.jpg);">
                         <div class="row">
                             <h3 class="h3index">
                                 <?php echo $miasta[2]; ?>
@@ -101,7 +70,42 @@
                         <hr>
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="jumbotron" style="background-image: url(https://www.rybnik.com.pl/pliki/v1/Rybnik_rynek.jpg);">
+                        <div class="row">
+                            <h3 class="h3index">
+                                <?php echo $miasta[0]; ?>
+                            </h3>
+                            <hr>
+                        </div>
+                        <p class="h3index">Ilosc hoteli :
+                            <?php echo CountHotelsInCity($miasta[0]); ?>
+                        </p>
+                        <!-- DO ZROBIENIA BACKEND -->
+                        <p class="h3index">Najpopularniejsze hotele:</p>
+                        <p class="h3index">Ambrozja</p>
+                        <p class="h3index">Pod Młynem</p>
+                        <!-- END -->
+                        <hr>
+                    </div>
+                    <div class="alert alert-dark text-center" role="alert">
+                        <i class="far fa-thumbs-up"></i> Zarejestruj hotel i z łatwością docieraj do gości, zarabiaj więcej!
+                    </div>
+                    <div class="jumbotron" style="background-image: url(https://d-nm.ppstatic.pl/k/r/fa/e6/54bf5c8e9664b_o.jpg?1420066800);">
+                        <div class="row">
+                            <h3 class="h3index">
+                                <?php echo $miasta[1]; ?>
+                            </h3>
+                            <hr>
+                        </div>
+                        <p class="h3index">Ilosc hoteli :
+                            <?php echo CountHotelsInCity($miasta[1]); ?>
+                        </p>
+                        <hr>
+                    </div>
+                </div>
             </div>
+
             <!-- <div class="row">
             <div class="col-md-4">
             <div class="jumbotron" style="height:80%;background-image: url(https://www.rybnik.com.pl/pliki/v1/Rybnik_rynek.jpg);">
