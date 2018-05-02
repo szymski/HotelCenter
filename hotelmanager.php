@@ -52,17 +52,18 @@
     <body>
         <?php include "css/navbar.php"; ?>
         <?php if($error) { ?>
-        <div class="alert alert-danger" role="alert">
-            <center>Cos poszlo nie tak</center>
-        </div>
+        <center>
+            <div class="alert alert-danger mt-2 w-75" role="alert">
+                <center>Cos poszlo nie tak</center>
+            </div>
+        </center>
         <?php } ?>
         <?php if($success) { ?>
         <div class="alert alert-success" role="alert">
             <center>Zdjecie zostalo wyslane</center>
         </div>
         <?php } ?>
-
-        <div class="container-fluid mt-4">
+        <div class="container-fluid mt-2">
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
@@ -94,7 +95,8 @@
                             </td>
 
                             <td>
-                                <input class="btn" type="button" value="Zarządzaj" onclick="window.location.href='/apartaments.php?id=<?=$hotele[$i]->GetId();?>'"/>
+                                <input class="btn" type="button" value="Zarządzaj" onclick="window.location.href='/apartaments.php?id=<?=$hotele[$i]->GetId();?>'"
+                                />
                             </td>
                             <td>
                                 <button type="button" class="btn btn-warning" onclick="fileModal('<?=$hotele[$i]->id;?>')">Obraz</button>
@@ -111,11 +113,12 @@
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="deleteTitle"></h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
+                                            <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <p>Usunięcie hotelu spowoduje usunięcie wszystkich apartamentów i przywrócenie hotelu będzie nie możliwe. </p>
+                                        <p>Usunięcie hotelu spowoduje usunięcie wszystkich apartamentów i przywrócenie hotelu
+                                            będzie nie możliwe. </p>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" id="delete-modal-button">Usuń</button>
@@ -131,10 +134,10 @@
                                     <div class="modal-header">
                                         <h5 class="modal-title">Ustaw obraz hotelu</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
+                                            <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body">
+                                    <div class="modal-body text-center">
                                         <form action="" method="post" enctype="multipart/form-data">
                                             <input type="file" name="file" id="file">
                                             <input type="hidden" name="id" id="hotel-id">
@@ -152,21 +155,22 @@
                 </table>
             </div>
         </div>
+        <?php include "css/footer.php"; ?>
     </body>
 
     </html>
 
     <script>
 
-    function deleteModal(id, nazwa) {
-        $("#deleteTitle").text("Czy chcesz usunąć hotel : " + nazwa);
-        $("#delete-modal-button").attr("onclick", "window.location.href='/hotelmanager.php?id="  + id + "'");
-        $("#deleteModal").modal("show");
-    }
-    
-    function fileModal(id) {
-        $("#hotel-id").val(id);
-        $("#fileModal").modal("show");
-    }
+        function deleteModal(id, nazwa) {
+            $("#deleteTitle").text("Czy chcesz usunąć hotel : " + nazwa);
+            $("#delete-modal-button").attr("onclick", "window.location.href='/hotelmanager.php?id=" + id + "'");
+            $("#deleteModal").modal("show");
+        }
+
+        function fileModal(id) {
+            $("#hotel-id").val(id);
+            $("#fileModal").modal("show");
+        }
 
     </script>

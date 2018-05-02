@@ -49,7 +49,7 @@
     <body>
 
         <?php include "css/navbar.php"; ?>
-        
+
         <div class="container mt-4">
             <?php if($error) { ?>
             <div class="alert alert-danger" role="alert">
@@ -104,6 +104,7 @@
                 </div>
             </div>
         </div>
+        <?php include "css/footer.php"; ?>
     </body>
 
     </html>

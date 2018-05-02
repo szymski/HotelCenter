@@ -100,6 +100,7 @@
                 <button class="btn" type="submit">Zaktualizuj</button>
             </form>
         </div>
+        <?php include "css/footer.php"; ?>
     </body>
 
     </html>

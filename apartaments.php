@@ -35,7 +35,11 @@
     <body>
         <?php include "css/navbar.php"; ?>
         <div class="container-fluid mt-4">
-            <center><h1 class="shadowtitle"><?php echo $nazwa; ?></h1></center>
+            <center>
+                <h1 class="shadowtitle">
+                    <?php echo $nazwa; ?>
+                </h1>
+            </center>
             <table class="table table-striped mt-2">
                 <thead>
                     <tr>
@@ -80,6 +84,7 @@
                 </tbody>
             </table>
         </div>
+        <?php include "css/footer.php"; ?>
     </body>
 
     </html>
