@@ -81,16 +81,22 @@
                         <p class="h3index">Ilosc hoteli :
                             <?php echo CountHotelsInCity($miasta[0]); ?>
                         </p>
-                        <!-- DO ZROBIENIA BACKEND -->
-                        <p class="h3index">Najpopularniejsze hotele:</p>
-                        <p class="h3index">Ambrozja</p>
-                        <p class="h3index">Pod Młynem</p>
-                        <!-- END -->
                         <hr>
                     </div>
-                    <div class="alert alert-dark text-center" role="alert">
-                        <i class="far fa-thumbs-up"></i> Zarejestruj hotel i z łatwością docieraj do gości, zarabiaj więcej!
-                    </div>
+                    <?php if(!$logged) {?>
+                    <a href="register.php">
+                        <div class="alert alert-dark text-center" role="alert">
+                            <i class="far fa-thumbs-up"></i> Zarejestruj się i udostępnij swój obiekt na HotelCenter
+                        </div>
+                    </a>
+                    <?php }?>
+                    <?php if($logged) {?>
+                    <a href="registerhotel.php">
+                        <div class="alert alert-dark text-center" role="alert">
+                            <i class="far fa-thumbs-up"></i> Zarejestruj hotel i z łatwością docieraj do gości, zarabiaj więcej!
+                        </div>
+                    </a>
+                    <?php }?>
                     <div class="jumbotron" style="background-image: url(https://d-nm.ppstatic.pl/k/r/fa/e6/54bf5c8e9664b_o.jpg?1420066800);">
                         <div class="row">
                             <h3 class="h3index">
@@ -105,36 +111,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- <div class="row">
-            <div class="col-md-4">
-            <div class="jumbotron" style="height:80%;background-image: url(https://www.rybnik.com.pl/pliki/v1/Rybnik_rynek.jpg);">
-                    <div class="row">
-                        <h3 style="color: white;">Rybnik</h3>
-                    </div>
-                        <p style="color: white;">Tutaj sql count hoteli w rbk</p>
-                    <hr>
-                </div>
-            </div>
-            <div class="col-md-4">
-            <div class="jumbotron" style="height:80%;background-image: url(https://www.rybnik.com.pl/pliki/v1/Rybnik_rynek.jpg);">
-                    <div class="row">
-                        <h3 style="color: white;">Rybnik</h3>
-                    </div>
-                        <p style="color: white;">Tutaj sql count hoteli w rbk</p>
-                    <hr>
-                </div>
-            </div>
-            <div class="col-md-4">
-            <div class="jumbotron" style="height:80%;background-image: url(https://www.rybnik.com.pl/pliki/v1/Rybnik_rynek.jpg);">
-                    <div class="row">
-                        <h3 style="color: white;">Rybnik</h3>
-                    </div>
-                        <p style="color: white;">Tutaj sql count hoteli w rbk</p>
-                    <hr>
-                </div>
-            </div>
-        </div> -->
         </div>
         <?php include "css/footer.php"; ?>
     </body>
