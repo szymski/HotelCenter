@@ -6,27 +6,27 @@ $success = false;
 $errorMsg = "";
 $hotele = array();
 
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-    if(isset($_POST["data_in"]) && !empty($_POST["data_in"])) {
-        $data_in = $_POST["data_in"];
-    }
-    if(isset($_POST["data_out"]) && !empty($_POST["data_out"])) {
-        $data_out = $_POST["data_out"];
-    }
-    if(isset($_POST["miasto"]) && !empty($_POST["miasto"])) {
-        $miasto = $_POST["miasto"];
-    } else { $error = true; }
-
-    //echo $data_in . $data_out . $miasto;
-
-    if(!$error) {
-        $hotele = GetAllHotels($miasto);
-        if(count($hotele) == 0) {
-            $error = true;
-            $errorMsg = $errorMsg . " Nie znaleziono hoteli w miescie : " . $miasto;
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+        if(isset($_POST["data_in"]) && !empty($_POST["data_in"])) {
+            $data_in = $_POST["data_in"];
         }
-    }
-}
+        if(isset($_POST["data_out"]) && !empty($_POST["data_out"])) {
+            $data_out = $_POST["data_out"];
+        }
+        if(isset($_POST["miasto"]) && !empty($_POST["miasto"])) {
+            $miasto = $_POST["miasto"];
+        } else { $error = true; }
+
+        //echo $data_in . $data_out . $miasto;
+
+        if(!$error) {
+            $hotele = GetAllHotels($miasto);
+            if(count($hotele) == 0) {
+                $error = true;
+                $errorMsg = $errorMsg . " Nie znaleziono hoteli w miescie : " . $miasto;
+            }
+        }
+    } else { $error = true; $errorMsg = $errorMsg . "Nie podano nazwy miasta"; }
 
 
 ?>
@@ -104,7 +104,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
                             <div class="col-6">
                                 <span class="badge badge-danger">Często rezerwowany</span>
-                                <p>2 wolne pokoje</p>
+                                <p><?=count(GetApartamentByHotelId($hotel->id));?> wolne pokoje </p>
                                 <p>Czesto rezerwowany obiekt</p>
                                 <h3>Cena: 256 zł za dobę</h3>
                                 <hr>

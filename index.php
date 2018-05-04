@@ -1,7 +1,5 @@
 <?php
     include "api/apis.php"; 
-    // include "api/HotelApi.php";
-    // include "api/DbController.php";
     session_start();
     $miasta = GetAllCities();
     
