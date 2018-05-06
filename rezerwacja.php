@@ -63,22 +63,83 @@
     <?php } ?>
     <div class="container mt-4">
         <div class="row">
-            <div class="col-md-12 text-center">
-                <div class="jumbotron">
-                    <h2 class="">Rezerwacja</h2>
+            <div class="col-md-12">
+                <div class="jumbotron text-center">
+                    <h2 class="shadowtitle">Rezerwacja</h2>
                     <p>
                         <?=$hotel->opis;?>
                     </p>
                 </div>
-                <?php foreach($apartamenty as $apartament) {
+            </div>
+        </div>
+        <div class="row">
+            <?php foreach($apartamenty as $apartament) {
                     if($apartament->wolne == 1) { ?>
+
+            <div class="col-md-6">
                 <div class="jumbotron">
-                    <?php print_r($apartament); ?>
-                    <button class="btn">rezerwuj</button>
-                    <!-- do tego buttona tutaj modal dydlak -->
+                    <div class="d-flex justify-content-center">
+                        <h2 class="">Pokój 2 osobowy
+                            <span class="badge badge-info">8,1</span>
+                        </h2>
+                    </div>
+                    <hr>
+                    <div id="hotelpokazslajdow" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#hotelpokazslajdow" data-slide-to="0" class="active"></li>
+                            <li data-target="#hotelpokazslajdow" data-slide-to="1"></li>
+                            <li data-target="#hotelpokazslajdow" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="https://t-ec.bstatic.com/images/hotel/max1024x768/725/72528533.jpg" alt="First slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="https://t-ec.bstatic.com/images/hotel/max1024x768/725/72530365.jpg" alt="Second slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="https://t-ec.bstatic.com/images/hotel/max1024x768/725/72528546.jpg" alt="Third slide">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#hotelpokazslajdow" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#hotelpokazslajdow" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    <p class="mt-2">Ilość łóżek jedno-osobowych: 2 </p>
+                    <p>Ilość łóżek dwu-osobowych: 1</p>
+                    <!-- <?php print_r($apartament); ?> -->
+                    <h3 class="shadowtitle">Cena: 272 zł za dobę</h3>
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-primary" onclick="rezerwujModal()">Rezerwuj</button>
+                    </div>
                 </div>
-                <?php } ?>
-                <?php } ?>
+
+            </div>
+            <?php } ?>
+            <?php } ?>
+        </div>
+        <div class="modal" id="rezerwujModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="rezerwujTitle"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Czy na pewno chcesz rezerwować ten pokój ? </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" id="rezerwuj-modal-button">Rezerwuj</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -86,3 +147,13 @@
 </body>
 
 </html>
+
+<script>
+
+    function rezerwujModal() {
+        $("#rezerwujTitle").text("Rezerwacja apartamentu");
+        $("#rezerwuj-modal-button").attr("onclick", "window.location.href='/index.php'");
+        $("#rezerwujModal").modal("show");
+    }
+
+</script>

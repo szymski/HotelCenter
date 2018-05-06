@@ -3,7 +3,7 @@
 class Database {
 
     private static $login = "root";
-    private static $password = "123";
+    private static $password = "";
     private static $dbname = "hotelcenter";
     public static $db = "";
 
