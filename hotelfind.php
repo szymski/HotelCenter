@@ -26,7 +26,7 @@ $hotele = array();
                 $errorMsg = $errorMsg . " Nie znaleziono hoteli w miescie : " . $miasto;
             }
         }
-    } else { $error = true; $errorMsg = $errorMsg . "Nie podano nazwy miasta"; }
+    } else { header( "Location: /" ); }
 
 
 ?>
@@ -85,34 +85,54 @@ $hotele = array();
                     </div>
                 </div>
                 <div class="col-md-9">
-                    <?php foreach($hotele as $hotel) { ?>
-                    <div class="jumbotron">
-                        <h2>
-                            <?=$hotel->nazwa?>
-                                <span class="badge badge-secondary ml-2">⋆⋆⋆⋆</span>
-                        </h2>
-                        <p>
-                            <i class="fas fa-map-marker"></i>
-                            <?=$hotel->miasto?>
-                                <i class="far fa-map"></i>
-                                <?=$hotel->adres;?>
-                        </p>
-                        <hr>
-                        <div class="row">
-                            <div class="col-6">
-                                <img src="<?=GetPathByHotelId($hotel->id)?>" style="height:100%;width:350px;" class="img-thumbnail" alt="Nie znaleziono obrazka">
-                            </div>
-                            <div class="col-6">
-                                <span class="badge badge-danger">Często rezerwowany</span>
-                                <p><?=count(GetApartamentByHotelId($hotel->id));?> wolne pokoje </p>
-                                <p>Czesto rezerwowany obiekt</p>
-                                <h3>Cena: 256 zł za dobę</h3>
+                    <?php 
+                    foreach($hotele as $hotel) { 
+                        $wolne = 0;
+                        $cena = 0;
+                        foreach(GetApartamentByHotelId($hotel->id) as $apartament) {
+                            $cena += $apartament->cena;
+                            if($apartament->wolne) {
+                                $wolne++;
+                            }
+                        } $cena = $cena / count(GetApartamentByHotelId($hotel->id));
+                        if($wolne > 0) {
+                            ?>
+                            <div class="jumbotron">
+                                <h2>
+                                    <?=$hotel->nazwa?>
+                                        <span class="badge badge-secondary ml-2">⋆⋆⋆⋆</span>
+                                </h2>
+                                <p>
+                                    <i class="fas fa-map-marker"></i>
+                                    <?=$hotel->miasto?>
+                                        <i class="far fa-map"></i>
+                                        <?=$hotel->adres;?>
+                                </p>
                                 <hr>
-                                <button class="btn btn-primary btn-lg" onclick="window.location.href='/rezerwacja.php?id_hotelu=<?=$hotel->id?>'">Rezerwuj pokoje</button>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <img src="<?=GetPathByHotelId($hotel->id)?>" style="height:100%;width:350px;" class="img-thumbnail" alt="Nie znaleziono obrazka">
+                                    </div>
+                                    <div class="col-6">
+                                        <span class="badge badge-danger">Często rezerwowany</span>
+                                        <p>
+                                        <?php
+                                            $wolne = 0;
+                                            foreach(GetApartamentByHotelId($hotel->id) as $apartament) {
+                                                if($apartament->wolne) {
+                                                    $wolne++;
+                                                }
+                                            } echo $wolne;
+                                        ?>
+                                        wolne pokoje </p>
+                                        <p>Czesto rezerwowany obiekt</p>
+                                        <h3>Cena: <?=$cena?> zł za dobę</h3>
+                                        <hr>
+                                        <button class="btn btn-primary btn-lg" onclick="window.location.href='/rezerwacja.php?id_hotelu=<?=$hotel->id?>'">Rezerwuj pokoje</button>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <?php } ?>
+                    <?php }} ?>
                 </div>
             </div>
         </div>

@@ -10,7 +10,7 @@
 
     class Apartament {
         
-        function __construct($id, $id_hotelu, $ilosc_miejsc, $lozka_jednoOS, $lozka_dwuOS, $wolne, $cena = 0) {
+        function __construct($id, $id_hotelu, $ilosc_miejsc, $lozka_jednoOS, $lozka_dwuOS, $wolne, $cena) {
             $this->id = $id;
             $this->id_hotelu = $id_hotelu;
             $this->ilosc_miejsc = $ilosc_miejsc;

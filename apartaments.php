@@ -3,6 +3,7 @@
     session_start();
     $success = false;
     $error = false;
+    $wolne = "";
 
     if($_SERVER["REQUEST_METHOD"] == "GET") {
         $id = NULL;
@@ -36,6 +37,13 @@
         if(!empty($_POST["lozka_dwuOS"]) && isset($_POST["lozka_dwuOS"])) {
             $lozka_dwuOS = $_POST["lozka_dwuOS"];
         } else { $error = true; }
+        if(!empty($_POST["cena"]) && isset($_POST["cena"])) {
+            $cena = $_POST["cena"];
+        } else { $error = true; }
+        if(isset($_POST["wolne"])) {
+            $wolne = $_POST["wolne"];
+        }
+
 
         if($ilosc_miejsc < 0 || $lozka_jednoOS < 0 || $lozka_dwuOS < 0) {
             $error = true;
@@ -46,7 +54,7 @@
         } else { $wolne = 1; }
         
         if(!$error) {
-            UpdateApartament($id_apartamentu, $ilosc_miejsc, $lozka_jednoOS, $lozka_dwuOS, $wolne);
+            UpdateApartament($id_apartamentu, $ilosc_miejsc, $lozka_jednoOS, $lozka_dwuOS, $wolne, $cena);
             $success = true;
         }
     }
@@ -95,6 +103,7 @@
                     <th scope="col">Ilość miejsc</th>
                     <th scope="col">Łóżka jednoosobwe</th>
                     <th scope="col">Łóżka dwuosobowe</th>
+                    <th scope="col">Cena</th>
                     <th scope="col">Wolne</th>
                     <th></th>
                     <th></th>
@@ -116,6 +125,9 @@
                         <?=$apartamenty[$i]->lozka_dwuOS;?>
                     </td>
                     <td>
+                        <?=$apartamenty[$i]->cena;?>
+                    </td>
+                    <td>
                         <?php  
                             if($apartamenty[$i]->wolne) {
                                 ?> <i class="fas fa-check"></i> <?php
@@ -131,6 +143,7 @@
                             '<?=$apartamenty[$i]->lozka_jednoOS;?>',
                             '<?=$apartamenty[$i]->lozka_dwuOS;?>',
                             '<?=$apartamenty[$i]->wolne;?>',
+                            '<?=$apartamenty[$i]->cena;?>',
                         )">Zarządzaj</button>
                     </td>
                     <td>
@@ -178,15 +191,21 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="example-text-input" class="col-2 col-form-label">Ilość łóżek jednoosobowych : </label>
+                                        <label for="example-text-input" class="col-2 col-form-label">Ilość łóżek jednoosobowych</label>
                                         <div class="col-10">
                                             <input id="lozka_jednoOS" name="lozka_jednoOS" class="form-control" type="number">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="example-text-input" class="col-2 col-form-label">Ilość łóżek dwuosobowych : </label>
+                                        <label for="example-text-input" class="col-2 col-form-label">Ilość łóżek dwuosobowych</label>
                                         <div class="col-10">
                                             <input id="lozka_dwaOS" name="lozka_dwuOS" class="form-control" type="number">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-text-input" class="col-2 col-form-label">Cena : </label>
+                                        <div class="col-10">
+                                            <input id="cena" name="cena" class="form-control" type="number">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -218,7 +237,7 @@ function deleteModal(id, delete_id) {
     $("#deleteModal").modal("show");
 }
 
-function manageModal(id, ilosc_miejsc, ilosc_lo1, ilosc_lo2, wolne) {
+function manageModal(id, ilosc_miejsc, ilosc_lo1, ilosc_lo2, wolne, cena) {
     $("#id_apartamentu").val(id);
     $("#ilosc_miejsc").val(ilosc_miejsc);
     $("#lozka_jednoOS").val(ilosc_lo1);
@@ -228,6 +247,7 @@ function manageModal(id, ilosc_miejsc, ilosc_lo1, ilosc_lo2, wolne) {
     } else { 
         $('#wolne').prop('checked', false);
     }
+    $("#cena").val(cena);
     $("#manageModal").modal("show");
 }
 

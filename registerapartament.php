@@ -22,9 +22,12 @@
         if(!empty($_POST["lozka_dwaOS"]) && $_POST["lozka_dwaOS"] != NULL) {
             $lozka_dwaOS = $_POST["lozka_dwaOS"];
         } else { $error = true; echo "lozka2os"; }
+        if(!empty($_POST["cena"]) && $_POST["cena"] != NULL) {
+            $cena = $_POST["cena"];
+        } else { $error = true; echo "lozka2os"; }
 
         if(!$error) {
-            if(AddApartament($hotel_id, $ilosc_miejsc, $lozka_jednoOS, $lozka_dwaOS, 1, "", "")) {
+            if(AddApartament($hotel_id, $ilosc_miejsc, $lozka_jednoOS, $lozka_dwaOS, 1, "", "", $cena)) {
                 $success = true;
             } else { $error = true; }
         }            
@@ -96,6 +99,8 @@
                             <input type="number" class="form-control" name="lozka_jednoOS">
                             <label for="name">Ilość łóżek 2 os.</label>
                             <input type="number" class="form-control" name="lozka_dwaOS">
+                            <label for="name">Cena za dobę</label>
+                            <input type="number" class="form-control" name="cena">
                             <center>
                                 <button class="btn btn-info mt-2" type="submit">Dodaj apartament</button>
                                 <center>
