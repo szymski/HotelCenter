@@ -17,8 +17,6 @@ $hotele = array();
             $miasto = $_POST["miasto"];
         } else { $error = true; }
 
-        //echo $data_in . $data_out . $miasto;
-
         if(!$error) {
             $hotele = GetAllHotels($miasto);
             if(count($hotele) == 0) {
@@ -51,7 +49,7 @@ $hotele = array();
     <?php if($error) { ?>
     <div class="alert alert-danger mt-2" role="alert">
       <center>
-        <?php echo $errorMsg ?>
+        <?php echo $errorMsg; ?>
       </center>
     </div>
     <?php } ?>
@@ -63,15 +61,15 @@ $hotele = array();
           <form action="" method="post">
             <div class="row">
               <label for="data_in">Data przyjazdu</label>
-              <input type="date" class="form-control mt-2" name="data_in" />
+              <input id="data_in" type="date" class="form-control mt-2" name="data_in" required/>
             </div>
             <div class="row">
               <label for="data_out">Data odjazdu</label>
-              <input type="date" class="form-control mt-2" name="data_out" />
+              <input id="data_out" type="date" class="form-control mt-2" name="data_out" required/>
             </div>
             <div class="row">
               <label for="nazwa" class="mt-2">Nazwa miasta/hotelu</label>
-              <input type="text" class="form-control mt-2" name="miasto" />
+              <input id="text" type="text" class="form-control mt-2" name="miasto" required/>
             </div>
             <div class="row">
               <button class="btn btn-info  float-right mt-3">Szukaj</button>
@@ -81,22 +79,22 @@ $hotele = array();
       </div>
       <div class="col-md-9">
         <?php
-                    foreach($hotele as $hotel) {
-                        $wolne = 0;
-                        $cena = 0;
-                        foreach(GetApartamentByHotelId($hotel->id) as $apartament) {
-                            $cena += $apartament->cena;
-                            if($apartament->wolne) {
-                                $wolne++;
-                            }
-                        } $cena = $cena / count(GetApartamentByHotelId($hotel->id));
-                        if($wolne > 0) {
-                            ?>
+          foreach($hotele as $hotel) {
+              $wolne = 0;
+              $cena = 0;
+              foreach(GetApartamentByHotelId($hotel->id) as $apartament) {
+                  $cena += $apartament->cena;
+                  if(IsFree($apartament->id, $data_in)) {
+                      $wolne++;
+                  }
+              } $cena = round($cena / count(GetApartamentByHotelId($hotel->id)), 1);
+              if($wolne > 0) {
+                  ?>
         <div class="jumbotron">
           <h2>
-                        <?=$hotel->nazwa?>
-                            <span class="badge badge-secondary ml-2">⋆⋆⋆⋆</span>
-                    </h2>
+            <?=$hotel->nazwa?>
+              <span class="badge badge-secondary ml-2">⋆⋆⋆⋆</span>
+            </h2>
           <p>
             <i class="fas fa-map-marker"></i>
             <?=$hotel->miasto?>
@@ -112,18 +110,18 @@ $hotele = array();
               <span class="badge badge-danger">Często rezerwowany</span>
               <p>
                 <?php
-                                            $wolne = 0;
-                                            foreach(GetApartamentByHotelId($hotel->id) as $apartament) {
-                                                if($apartament->wolne) {
-                                                    $wolne++;
-                                                }
-                                            } echo $wolne;
-                                        ?> wolne pokoje </p>
+                  $wolne = 0;
+                  foreach(GetApartamentByHotelId($hotel->id) as $apartament) {
+                      if(IsFree($apartament->id, $data_in)) {
+                          $wolne++;
+                      }
+                  } echo $wolne;
+                  ?> wolne pokoje </p>
               <p>Czesto rezerwowany obiekt</p>
               <h3>Cena:
-                                <?=$cena?> zł za dobę</h3>
+                <?=$cena?> zł za dobę</h3>
               <hr>
-              <button class="btn btn-primary btn-lg" onclick="window.location.href='/rezerwacja.php?id_hotelu=<?=$hotel->id?>'">Rezerwuj pokoje</button>
+              <button class="btn btn-primary btn-lg" onclick="window.location.href='/rezerwacja.php?id_hotelu=<?=$hotel->id?>&data_in=<?=$data_in?>'">Rezerwuj pokoje</button>
             </div>
           </div>
         </div>
@@ -135,3 +133,11 @@ $hotele = array();
 </body>
 
 </html>
+
+<script>
+  $( document ).ready(function() {
+    $("#data_in").val("<?=$data_in?>");
+    $("#data_out").val("<?=$data_out?>");
+    $("#text").val("<?=$miasto?>");
+  });
+</script>

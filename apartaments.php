@@ -88,13 +88,13 @@
     </div>
     <?php header("Refresh:1"); } ?>
 
-    <div class="container-fluid mt-4">
+    <div class="container mt-4">
       <center>
         <h1 class="shadowtitle">
                 <?php echo $nazwa; ?>
             </h1>
       </center>
-      <table class="table table-striped mt-2">
+      <table class="table table-hover mt-2">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -103,6 +103,7 @@
             <th scope="col">Łóżka dwuosobowe</th>
             <th scope="col">Cena</th>
             <th scope="col">Wolne</th>
+            <th></th>
             <th></th>
             <th></th>
           </tr>
@@ -145,6 +146,11 @@
                             '<?=$apartamenty[$i]->wolne;?>',
                             '<?=$apartamenty[$i]->cena;?>',
                         )">Zarządzaj</button>
+            </td>
+            <td>
+              <a href="/galeria.php?id=<?=$apartamenty[$i]->id;?>">
+                <button class="btn btn-warning" type="button">Galeria</button>
+              </a>
             </td>
             <td>
               <button class="btn btn-danger" name="delete_id" type="submit" onclick="deleteModal('<?=$id;?>', <?=$apartamenty[$i]->id;?>)">Usuń</button>

@@ -31,17 +31,17 @@
               <div class="row">
                 <div class="col-6">
                   <label for="data_in">Data przyjazdu</label>
-                  <input type="date" class="form-control mt-2" name="data_in" />
+                  <input type="date" class="form-control mt-2" name="data_in"  required/>
                 </div>
                 <div class="col-6">
                   <label for="data_out">Data odjazdu</label>
-                  <input type="date" class="form-control mt-2" name="data_out" />
+                  <input type="date" class="form-control mt-2" name="data_out" required/>
                 </div>
               </div>
               <div class="row">
                 <div class="col-12">
                   <label for="nazwa" class="mt-2">Nazwa miasta/hotelu</label>
-                  <input type="text" class="form-control mt-2" name="miasto" />
+                  <input type="text" class="form-control mt-2" name="miasto" required/>
                 </div>
               </div>
               <div class="row">

@@ -59,6 +59,9 @@
           <li class="nav-item active">
             <a class="nav-link" href="hotelmanager.php">Zarządzaj Hotelami</a>
           </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="myreservations.php">Twoje Rezerwacje</a>
+          </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <a href="registerapartament.php">

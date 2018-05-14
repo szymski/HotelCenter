@@ -53,7 +53,7 @@
 
     function GetAllCities() {
         $miasta = array();
-        $stmt = Database::$db->prepare("SELECT `miasto` FROM `hotele` WHERE 1");
+        $stmt = Database::$db->prepare("SELECT `miasto` FROM `miasta` WHERE 1");
         $stmt->execute();
         $stmt->bind_result($miasto);
         $stmt->store_result();

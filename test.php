@@ -1,10 +1,10 @@
 <?php
     session_start();
-    include "api/DbController.php";
-    include "api/HotelApi.php";
-    include "api/ApartamentApi.php";
-    include "api/AccountApi.php";
-    include "api/FileApi.php";
+    include_once "api/apis.php";
 
-    echo GetPathByHotelId(5);
+    if(IsFree(1,"2018-05-14")) {
+        echo "free";
+    } else {
+        echo "nope";
+    }
 ?>

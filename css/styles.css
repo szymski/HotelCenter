@@ -7,6 +7,7 @@ body {
     margin-bottom: 60px;
     font-family: 'Raleway', sans-serif;
 }
+
 .footer {
     position: absolute;
     bottom: 0;
@@ -18,8 +19,8 @@ body {
 }
 
 input {
-    text-align:center;
- }
+    text-align: center;
+}
 
 .well,.jumbotron {
     background-color: #eceeef;
@@ -32,16 +33,16 @@ a {
 }
 
 .btn {
-    border-radius:0;
+    border-radius: 0;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.h3index{
+.h3index {
     color: white;
     text-shadow: 2px 2px 4px #000000;
 }
 
-.shadowtitle{
+.shadowtitle {
     color: black;
     text-shadow: 2px 2px 4px #000000;
 }
@@ -51,4 +52,53 @@ a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    font-size: 24px;
+    line-height: 1.33;
+    border-radius: 35px;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+}
+
+.btn-circle.btn-lg {
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 25px;
+}
+
+.image-gallery {
+    display: inline-block;
+    background-size: cover;
+    width: 365px;
+    height: 365px;
+    opacity: 1;
+    transition: 0.3s;
+}
+
+.image-gallery:hover {
+    opacity: 0.4;
+}
+
+.poka {
+    opacity: 0.0;
+}
+
+.image-gallery:hover .show {
+    opacity: 1;
 }
